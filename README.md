@@ -1,16 +1,23 @@
-## Hi there 👋
+# Hi, I'm Vinayak K V 👋
 
-<!--
-**vinayak533/vinayak533** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+🎯 Data Scientist | Machine Learning Engineer | Generative AI Enthusiast  
 
-Here are some ideas to get you started:
+I am a passionate Data Science graduate with strong skills in Machine Learning, Deep Learning, and Generative AI.  
+I enjoy building end-to-end AI solutions that solve real-world problems and deliver measurable business impact.  
+I have experience developing and deploying machine learning systems using modern tools and frameworks.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+---
+
+## 🚀 About Me
+
+- 🎓 Bachelor of Computer Applications (BCA)
+- 💡 Interested in Machine Learning, LLMs, and AI Agents
+- 🔧 Experience in building and deploying ML applications
+- 📈 Focused on scalable and data-driven solutions
+- 🌱 Currently learning advanced AI and production ML systems
+
+---
+
+📫 How to reach me:  
+Email: vinayakkvjob@gmail.com  
+LinkedIn: https://www.linkedin.com/in/vinayak-k-v-b1645a359
