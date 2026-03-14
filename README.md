@@ -20,4 +20,5 @@ I have experience developing and deploying machine learning systems using modern
 
 📫 How to reach me:  
 Email: vinayakkvjob@gmail.com  
-LinkedIn: https://www.linkedin.com/in/vinayak-k-v-b1645a359
+LinkedIn: https://www.linkedin.com/in/vinayak-kv-ds
+
