@@ -1,86 +1,185 @@
-<h1 align="center">👋 Hi, I'm Vinayak K V 👋</h1>
+<!--  ═══════════════════════════════════════════════════════════
+      VINAYAK K V — GitHub Profile README
+      ═══════════════════════════════════════════════════════════ -->
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=00FF88&center=true&vCenter=true&width=600&lines=🎯+Data+Scientist+%7C+ML+Engineer+%7C+GenAI+Enthusiast;🤖+Building+end-to-end+AI+solutions;🧠+Passionate+about+LLMs+and+AI+Agents;🚀+Turning+data+into+real-world+impact" alt="Typing SVG" />
-</p>
+<div align="center">
+
+<!-- BANNER / CAPSULE HEADER -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=180&section=header&text=Vinayak%20K%20V&fontSize=42&fontColor=fff&animation=twinkling&fontAlignY=32&desc=Data%20Scientist%20%7C%20ML%20Engineer%20%7C%20GenAI%20Builder&descAlignY=55&descSize=16" width="100%"/>
+
+<!-- TYPING SVG — kept exactly as requested -->
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=00FF88&center=true&vCenter=true&width=600&lines=🎯+Data+Scientist+%7C+ML+Engineer+%7C+GenAI+Enthusiast;🤖+Building+end-to-end+AI+solutions;🧠+Passionate+about+LLMs+and+AI+Agents;🚀+Turning+data+into+real-world+impact" alt="Typing SVG" />
+
+<br/>
+
+<!-- PROFILE VIEWS + FOLLOWERS BADGES -->
+<a href="https://github.com/vinayak533">
+  <img src="https://komarev.com/ghpvc/?username=vinayak533&label=Profile+Views&color=0e75b6&style=flat" alt="Profile Views"/>
+</a>
+<img src="https://img.shields.io/github/followers/vinayak533?label=Followers&style=flat&color=0e75b6" alt="Followers"/>
+
+</div>
 
 ---
 
-<img align="right" src="https://user-images.githubusercontent.com/74038190/229223263-cf2e4b07-2615-4f87-9c38-e37600f8381a.gif" width="380"/>
+<!-- ABOUT ME — TWO-COLUMN LAYOUT -->
+<table>
+<tr>
+<td valign="top" width="55%">
 
-- 📬 Contact me @: [vinayakkvjob@gmail.com](mailto:vinayakkvjob@gmail.com)
-- 🏅 Currently building **AI Agents, LLM-powered apps and Full-Stack ML projects**
-- 🧠 Making **end-to-end ML systems** that solve real-world problems
-- 📊 Focused on **scalable, data-driven solutions with measurable impact**
-- ⚡ Always diving into **new tech** — LLMs, RAG, and production AI systems
+### 🧠 Who Am I?
 
-<br clear="right"/>
+```python
+class VinayakKV:
+    name       = "Vinayak K V"
+    title      = "Data Scientist & ML Engineer"
+    education  = "BCA — Computer Applications"
+    location   = "Kerala, India 🇮🇳"
+
+    focus = [
+        "Machine Learning & Deep Learning",
+        "Generative AI & LLM Applications",
+        "AI Agents & RAG Systems",
+        "Production ML Deployment",
+    ]
+
+    currently_learning = [
+        "Advanced LLM Fine-tuning",
+        "MLOps & Production AI Systems",
+        "Multi-Agent Frameworks",
+    ]
+
+    fun_fact = "I turn messy data into clean insights ✨"
+```
+
+</td>
+<td valign="top" width="45%" align="center">
+
+<img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="320" alt="Coding GIF"/>
+
+</td>
+</tr>
+</table>
 
 ---
 
-### 🧑‍💻 About Me
+### 🔥 What I'm Up To
 
-Data Scientist and Machine Learning Engineer with strong skills in Deep Learning, Generative AI, and end-to-end ML deployment. Proven track record of building intelligent systems — from customer churn prediction APIs to AI-powered multi-agent stock analysis — with production-grade reliability and measurable business outcomes.
+<table>
+  <tr>
+    <td>🏗️</td>
+    <td>Building <strong>AI Agents</strong> and <strong>LLM-powered applications</strong></td>
+  </tr>
+  <tr>
+    <td>🤖</td>
+    <td>Crafting <strong>end-to-end ML systems</strong> that solve real-world problems</td>
+  </tr>
+  <tr>
+    <td>📈</td>
+    <td>Focused on <strong>scalable, data-driven solutions</strong> with measurable impact</td>
+  </tr>
+  <tr>
+    <td>⚡</td>
+    <td>Exploring <strong>RAG pipelines</strong>, <strong>CrewAI</strong>, and production ML infrastructure</td>
+  </tr>
+  <tr>
+    <td>🌐</td>
+    <td>Open to <strong>collaborations</strong> and <strong>freelance ML/AI projects</strong></td>
+  </tr>
+</table>
 
 ---
 
 ### 🛠️ Tech Stack
 
+**Languages & Core**
+
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Bash](https://img.shields.io/badge/Bash-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)
+
+**ML / DL Frameworks**
+
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
 ![Scikit-Learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![Keras](https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white)
+![XGBoost](https://img.shields.io/badge/XGBoost-189ABE?style=for-the-badge&logo=xgboost&logoColor=white)
+
+**Generative AI & Agents**
+
 ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
 ![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)
+![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)
+![CrewAI](https://img.shields.io/badge/CrewAI-FF4B4B?style=for-the-badge&logo=robot&logoColor=white)
+
+**Data & Visualization**
+
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=python&logoColor=white)
+![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)
+
+**Deployment & Tools**
+
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
 
 ---
 
-### 📊 GitHub Stats
+### 📊 GitHub Analytics
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=vinayak533&show_icons=true&theme=radical&hide_border=true&bg_color=0d1117&title_color=00ff88&icon_color=00ff88&text_color=ffffff" width="48%" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=vinayak533&theme=radical&hide_border=true&background=0d1117&ring=00ff88&fire=00ff88&currStreakLabel=00ff88" width="48%" />
-</p>
+<div align="center">
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=vinayak533&layout=compact&theme=radical&hide_border=true&bg_color=0d1117&title_color=00ff88&text_color=ffffff" width="40%" />
-</p>
+<img src="https://github-readme-stats.vercel.app/api?username=vinayak533&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00ff88&icon_color=00ff88&text_color=c9d1d9&ring_color=00ff88" width="48%"/>
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=vinayak533&theme=tokyonight&hide_border=true&background=0d1117&ring=00ff88&fire=ff6b6b&currStreakLabel=00ff88&sideLabels=c9d1d9" width="48%"/>
 
----
+<br/><br/>
 
-### 🚀 Featured Projects
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=vinayak533&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00ff88&text_color=c9d1d9&langs_count=8" width="40%"/>
 
-| Project | Description | Tech |
-|--------|-------------|------|
-| [🤖 AI Multi-Agent Stock Analysis](https://github.com/vinayak533/AI-Multi-Agent-Stock-Analysis-Trading-System) | Real-time stock analysis with Buy/Sell/Hold recommendations using CrewAI | Python, CrewAI |
-| [🔍 InsightGenie Data Analyzer](https://github.com/vinayak533/InsightGenie-Data-Analyzer) | AI-powered CSV analysis with visualizations & ML model recommendations | Python, Streamlit |
-| [📧 Spam Mail Detection App](https://github.com/vinayak533/spam-mail-detection-ml-app) | ML-based spam classifier with Streamlit web interface | Python, Scikit-learn |
-| [📉 Customer Churn FastAPI](https://github.com/vinayak533/customer-churn-fastapi) | Production-ready churn prediction REST API | Python, FastAPI |
-| [😷 Face Mask Detection CNN](https://github.com/vinayak533/Face-Mask-Detection-CNN) | Deep learning model for real-time face mask detection | Python, CNN, Keras |
-| [🏠 House Price Prediction](https://github.com/vinayak533/house-price-prediction) | ML model predicting house prices from location & housing features | Python, Scikit-learn |
+<br/><br/>
+
+<!-- ACTIVITY GRAPH -->
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=vinayak533&bg_color=0d1117&color=00ff88&line=00ff88&point=ffffff&area=true&hide_border=true" width="95%"/>
+
+</div>
 
 ---
 
-### 🌐 Connect With Me
+### 🤝 Let's Connect
 
-<p align="left">
-  <a href="mailto:vinayakkvjob@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
-  <a href="https://www.linkedin.com/in/vinayak-k-v-b1645a359"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
-  <a href="https://vinayak533.github.io/vinayak-portfolio/"><img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=todoist&logoColor=white"/></a>
-</p>
+<div align="center">
+
+<a href="mailto:vinayakkvjob@gmail.com">
+  <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
+</a>
+&nbsp;
+<a href="https://www.linkedin.com/in/vinayak-k-v-b1645a359">
+  <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
+</a>
+&nbsp;
+<a href="https://vinayak533.github.io/vinayak-portfolio/">
+  <img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=firefox-browser&logoColor=white"/>
+</a>
+&nbsp;
+<a href="https://github.com/vinayak533">
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
+
+</div>
 
 ---
 
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=vinayak533&label=Profile+Views&color=00ff88&style=flat" alt="profile views" />
-</p>
+<!-- FOOTER WAVE -->
+<div align="center">
 
-<p align="center">
-  <i>⚡ "The goal is to turn data into information, and information into insight." — Carly Fiorina</i>
-</p>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer" width="100%"/>
+
+*⚡ "The goal is to turn data into information, and information into insight."*
+
+</div>
