@@ -1,28 +1,28 @@
 # 👋 Hi, I'm Vinayak K V
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=00F7FF&center=true&vCenter=true&width=800&lines=Data+Scientist+%7C+ML+Engineer+%7C+GenAI+Builder;Building+AI+Agents+%26+LLM+Apps;Turning+Data+into+Real-World+Impact" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=26&duration=2800&pause=800&color=00E6FF&center=true&vCenter=true&width=780&lines=Data+Scientist+%7C+ML+Engineer+%7C+GenAI+Builder;Building+AI+Agents+%26+LLM+Applications;Turning+Data+into+Impact" />
 </p>
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=200&section=header&text=Vinayak%20K%20V&fontSize=45&fontColor=ffffff&animation=fadeIn" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=180&section=header&text=Vinayak%20K%20V&fontSize=40&fontColor=ffffff&animation=fadeIn" />
 </p>
 
 ---
 
 ## 🧠 About Me
 
-🚀 Data Scientist & ML Engineer passionate about building **end-to-end AI systems**  
-🤖 Specialized in **GenAI, LLMs, and AI Agents**  
-📈 Focused on **scalable ML solutions with real-world impact**  
-⚡ Exploring **RAG pipelines, autonomous agents & production ML infra**
+🚀 **Data Scientist & ML Engineer** focused on building **end-to-end AI systems**  
+🤖 Specialized in **Generative AI, LLMs, and AI Agents**  
+📈 Delivering **scalable, production-ready ML solutions** with real-world impact  
+⚡ Exploring **RAG pipelines, autonomous agents, and modern ML infrastructure**
 
 ---
 
-## 🐍 3D Contribution Snake
+## 🐍 GitHub Contribution
 
 <p align="center">
-  <img src="https://github.com/Platane/snk/raw/output/github-contribution-grid-snake-dark.svg" />
+  <img src="https://github.com/Platane/snk/raw/output/github-contribution-grid-snake-dark.svg" alt="github contribution snake"/>
 </p>
 
 ---
@@ -36,19 +36,6 @@
   <a href="https://github.com/vinayak533/InsightGenie">
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=vinayak533&repo=InsightGenie&theme=tokyonight" />
   </a>
-</p>
-
----
-
-## 📊 GitHub Stats
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=vinayak533&show_icons=true&theme=tokyonight&hide_border=true" height="170" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=vinayak533&theme=tokyonight&hide_border=true" height="170" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=vinayak533&layout=compact&theme=tokyonight&hide_border=true" />
 </p>
 
 ---
@@ -108,4 +95,4 @@
 
 ---
 
-⭐ *Star my repositories if you find them useful!* 🚀
+⭐ *If you like my work, consider starring my repositories!* 🚀
