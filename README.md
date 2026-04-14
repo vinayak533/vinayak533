@@ -1,112 +1,150 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=220&section=header&text=VINAYAK%20K%20V&fontSize=55&fontColor=00F7FF&animation=twinkling&fontAlignY=38&desc=Data%20Scientist%20%7C%20ML%20Engineer%20%7C%20GenAI%20Builder&descAlignY=58&descSize=20&descColor=a78bfa" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,30:302b63,60:1a1a2e,100:0f0c29&height=250&section=header&text=VINAYAK%20K%20V&fontSize=65&fontColor=00F7FF&animation=twinkling&fontAlignY=40&desc=⚡%20Data%20Scientist%20%7C%20ML%20Engineer%20%7C%20GenAI%20Builder&descAlignY=62&descSize=22&descColor=a78bfa" />
 </p>
 
-<h1 align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=28&duration=3000&pause=1000&color=00F7FF&center=true&vCenter=true&width=900&lines=🤖+Building+AI+That+Explains+Itself;⚡+End-to-End+ML+%7C+LLMs+%7C+GenAI;🚀+From+Raw+Data+to+Production+Systems;🧠+Top+2%25+on+LeetCode+%7C+Rank+108%2F6770" />
-</h1>
+<div align="center">
+
+```
+╔══════════════════════════════════════════════════════════════════╗
+║                                                                  ║
+║    ██╗   ██╗██╗███╗   ██╗ █████╗ ██╗   ██╗ █████╗ ██╗  ██╗     ║
+║    ██║   ██║██║████╗  ██║██╔══██╗╚██╗ ██╔╝██╔══██╗██║ ██╔╝     ║
+║    ██║   ██║██║██╔██╗ ██║███████║ ╚████╔╝ ███████║█████╔╝      ║
+║    ╚██╗ ██╔╝██║██║╚██╗██║██╔══██║  ╚██╔╝  ██╔══██║██╔═██╗      ║
+║     ╚████╔╝ ██║██║ ╚████║██║  ██║   ██║   ██║  ██║██║  ██╗     ║
+║      ╚═══╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝    ║
+║                                                                  ║
+║           [ DATA SCIENTIST · ML ENGINEER · GENAI BUILDER ]      ║
+╚══════════════════════════════════════════════════════════════════╝
+```
+
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=22&duration=2500&pause=800&color=00F7FF&center=true&vCenter=true&width=750&lines=🤖+Building+AI+That+Explains+Itself;⚡+End-to-End+ML+Pipelines+%7C+LLMs+%7C+GenAI;🚀+From+Raw+Data+to+Production+Systems;🏆+Top+2%25+on+LeetCode+—+Rank+108+%2F+6%2C770;🧠+Making+Machines+Smarter%2C+One+Model+at+a+Time" alt="Typing SVG" />
+</div>
+
+<br/>
 
 ---
 
-<img align="right" width="340" src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" />
+## 🧬 Who Am I?
 
-## 🧬 About Me
+<img align="right" width="320" src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" />
 
 ```python
 class Vinayak:
-    name       = "Vinayak K V"
-    role       = "Data Scientist & ML Engineer"
-    location   = "Kerala, India 🇮🇳"
-    education  = "BCA | Data Science & AI (91%)"
-    focus      = ["GenAI", "LLMs", "AI Agents", "MLOps"]
-    superpower = "Turning raw data → production AI systems"
-    motto      = "Models that don't explain themselves aren't ready."
+    name        = "Vinayak K V"
+    role        = ["Data Scientist", "ML Engineer", "GenAI Builder"]
+    location    = "Kerala, India 🇮🇳"
+    education   = "BCA | Data Science & AI — 91% 🎓"
+    focus       = ["LLMs", "AI Agents", "RAG", "MLOps"]
+    superpower  = "Raw data → Production AI systems"
+    leetcode    = "Top 2% Globally 🏆 (Rank 108 / 6,770)"
+    motto       = "Models that can't explain themselves aren't ready."
+
+    def current_mission(self):
+        return "Build AI that is explainable, scalable & impactful"
 ```
 
-- 🔭 Building **AI agents, LLM apps & end-to-end ML pipelines**
-- 🧪 Exploring **RAG, autonomous workflows & modern ML infra**
-- 🏆 **Top 2% globally on LeetCode** (Rank 108 / 6,770)
-- 📜 Certified in **Generative AI (AWS)** & **AI Fluency (Anthropic)**
-- ⚡ Fun fact: I make models that *talk back* and explain predictions in plain English
+<br clear="right"/>
 
 ---
 
-## 🚀 Featured Projects
+## 🎯 What I'm Building
 
-<table>
-  <tr>
-    <td width="50%">
-      <h3 align="center">🔬 PredictLab</h3>
-      <p align="center">
-        <a href="https://github.com/vinayak533" target="_blank">
-          <img src="https://img.shields.io/badge/Code-000?style=for-the-badge&logo=github&logoColor=white"/>
-        </a>
-        <a href="https://vinayak533.github.io/VINAYAK_PORTFOLIO/" target="_blank">
-          <img src="https://img.shields.io/badge/Live%20Demo-00F7FF?style=for-the-badge&logo=vercel&logoColor=black"/>
-        </a>
-      </p>
-      <p>AI-powered disease prediction platform for Diabetes, Stroke & Heart Disease. Integrates <b>LLaMA 3.1-8B</b> via Groq API for plain-language explanations. Deployed on <b>Hugging Face Spaces</b> with Docker.</p>
-      <p><code>Python</code> <code>FastAPI</code> <code>Scikit-learn</code> <code>Docker</code> <code>Groq API</code></p>
-    </td>
-    <td width="50%">
-      <h3 align="center">🏦 Bank Churn Intelligence</h3>
-      <p align="center">
-        <a href="https://github.com/vinayak533" target="_blank">
-          <img src="https://img.shields.io/badge/Code-000?style=for-the-badge&logo=github&logoColor=white"/>
-        </a>
-      </p>
-      <p>XGBoost pipeline achieving <b>87%+ AUC-ROC</b> on 10K records. Features LLaMA 3 70B churn explanations, ElevenLabs TTS voice delivery & a real-time risk dashboard with AI chatbot.</p>
-      <p><code>XGBoost</code> <code>SMOTE</code> <code>LLaMA 3</code> <code>FastAPI</code> <code>CI/CD</code></p>
-    </td>
-  </tr>
-</table>
+<div align="center">
+
+| 🤖 AI Agents | 🧠 LLM Apps | ⚙️ ML Pipelines | 🚢 MLOps |
+|:---:|:---:|:---:|:---:|
+| Autonomous workflows | Groq · LLaMA · RAG | End-to-end systems | Docker · CI/CD · MLflow |
+
+</div>
 
 ---
 
 ## 🛠️ Tech Arsenal
 
-<p align="center">
+<div align="center">
 
-**Languages**
+**⚡ Languages**
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+![C](https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=c&logoColor=black)
 
-**ML / AI**
+**🧠 ML / AI**
 
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
-![XGBoost](https://img.shields.io/badge/XGBoost-189AB4?style=for-the-badge&logo=xgboost&logoColor=white)
+![XGBoost](https://img.shields.io/badge/XGBoost-189AB4?style=for-the-badge&logoColor=white)
 ![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
 
-**MLOps & Deployment**
+**🚀 MLOps & Deployment**
 
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![MLflow](https://img.shields.io/badge/MLflow-0194E2?style=for-the-badge&logo=mlflow&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
-
-**Data & Viz**
-
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
-![Power BI](https://img.shields.io/badge/PowerBI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 
-</p>
+**📊 Data & Viz**
+
+![Power BI](https://img.shields.io/badge/PowerBI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=python&logoColor=white)
+![Seaborn](https://img.shields.io/badge/Seaborn-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
+
+**🤖 Generative AI**
+
+![Ollama](https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logoColor=white)
+![Groq](https://img.shields.io/badge/Groq_API-F55036?style=for-the-badge&logoColor=white)
+![LLaMA](https://img.shields.io/badge/LLaMA_3-0467DF?style=for-the-badge&logo=meta&logoColor=white)
+![RAG](https://img.shields.io/badge/RAG_Pipelines-8A2BE2?style=for-the-badge&logoColor=white)
+
+</div>
 
 ---
 
-## 📊 GitHub Stats
+## 🏆 Hall of Fame
 
-<p align="center">
-  <img width="48%" src="https://github-readme-stats.vercel.app/api?username=vinayak533&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00F7FF&icon_color=a78bfa&text_color=ffffff" />
-  <img width="48%" src="https://github-readme-streak-stats.herokuapp.com/?user=vinayak533&theme=tokyonight&hide_border=true&background=0d1117&ring=00F7FF&fire=a78bfa&currStreakLabel=00F7FF" />
-</p>
-<p align="center">
-  <img width="48%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=vinayak533&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00F7FF&text_color=ffffff" />
-</p>
+<div align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=vinayak533&theme=radical&no-frame=true&column=7&margin-w=8" />
+</div>
+
+<br/>
+
+<div align="center">
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                   🏅  ACHIEVEMENTS                      │
+├──────────────────────────────┬──────────────────────────┤
+│  🥇 LeetCode Top 2% Globally │  Rank 108 / 6,770        │
+│  🐍 HackerRank Python Gold   │  Score: 415              │
+│  📊 Kaggle Python Coder      │  Badge Earned            │
+│  💡 GeeksforGeeks            │  150+ Problems | 266 pts │
+└──────────────────────────────┴──────────────────────────┘
+```
+
+</div>
+
+---
+
+## 📈 GitHub Analytics
+
+<div align="center">
+  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=vinayak533&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00F7FF&icon_color=a78bfa&text_color=ffffff&count_private=true" />
+  <img width="49%" src="https://github-readme-streak-stats.herokuapp.com/?user=vinayak533&theme=tokyonight&hide_border=true&background=0d1117&ring=00F7FF&fire=a78bfa&currStreakLabel=00F7FF" />
+</div>
+<div align="center">
+  <img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=vinayak533&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00F7FF&text_color=ffffff" />
+</div>
 
 ---
 
@@ -118,52 +156,37 @@ class Vinayak:
 
 ---
 
-## 🏆 Achievements
+## 🌐 Find Me Here
 
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=vinayak533&theme=radical&no-frame=true&column=6&margin-w=10" />
-</p>
+<div align="center">
 
-| 🏅 Achievement | 📌 Details |
-|---|---|
-| 🥇 LeetCode Top 2% | Rank **108 / 6,770** — Weekly Contest 487 |
-| 🐍 HackerRank Gold | Python Badge — Score **415** |
-| 📊 Kaggle | Python Coder Badge |
-| 💡 GeeksforGeeks | **150+ problems** solved — Score 266 |
-| ☁️ AWS Certified | Introduction to Generative AI (2026) |
-| 🤖 Anthropic Certified | AI Fluency — Framework & Foundations (2026) |
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:vinayakkvjob@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/vinayak-kv-ds)
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vinayak533.github.io/VINAYAK_PORTFOLIO/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/vinayak533)
+
+</div>
 
 ---
 
-## 🌐 Let's Connect
+<div align="center">
+
+```
+╔═══════════════════════════════════════════════════════╗
+║                                                       ║
+║   "The goal is to turn data into information,         ║
+║    and information into insight."                     ║
+║                                                       ║
+║                                    ║
+╚═══════════════════════════════════════════════════════╝
+```
+
+<img src="https://komarev.com/ghpvc/?username=vinayak533&color=00F7FF&style=for-the-badge&label=PROFILE+VIEWS" />
+
+*⭐ If my work inspires you — a star means the world! 🚀*
+
+</div>
 
 <p align="center">
-  <a href="mailto:vinayakkvjob@gmail.com">
-    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
-  </a>
-  <a href="https://www.linkedin.com/in/vinayak-kv-ds">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
-  </a>
-  <a href="https://vinayak533.github.io/VINAYAK_PORTFOLIO/">
-    <img src="https://img.shields.io/badge/Portfolio-000?style=for-the-badge&logo=vercel&logoColor=white" />
-  </a>
-  <a href="https://github.com/vinayak533">
-    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
-  </a>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:1a1a2e&height=130&section=footer&animation=twinkling" />
 </p>
-
----
-
-<p align="center">
-  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" />
-</p>
-
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:24243e,50:302b63,100:0f0c29&height=120&section=footer&animation=twinkling" />
-</p>
-
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=vinayak533&color=00F7FF&style=for-the-badge&label=PROFILE+VIEWS" />
-</p>
-
-<p align="center"><i>⭐ If my work inspires you, a star goes a long way! 🚀</i></p>
