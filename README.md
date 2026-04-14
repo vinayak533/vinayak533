@@ -1,6 +1,78 @@
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&duration=2000&pause=500&color=00F7FF&center=true&vCenter=true&multiline=true&width=900&height=220&lines=╔══════════════════════════════════════════════════════════════════╗;║                                                                  ║;║    ██╗   ██╗██╗███╗   ██╗ █████╗ ██╗   ██╗ █████╗ ██╗  ██╗     ║;║    ██║   ██║██║████╗  ██║██╔══██╗╚██╗ ██╔╝██╔══██╗██║ ██╔╝     ║;║    ██║   ██║██║██╔██╗ ██║███████║ ╚████╔╝ ███████║█████╔╝      ║;║    ╚██╗ ██╔╝██║██║╚██╗██║██╔══██║  ╚██╔╝  ██╔══██║██╔═██╗      ║;║     ╚████╔╝ ██║██║ ╚████║██║  ██║   ██║   ██║  ██║██║  ██╗     ║;║      ╚═══╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝    ║;║                                                                  ║;║     [ DATA SCIENTIST · ML ENGINEER · GENAI BUILDER ]           ║;╚══════════════════════════════════════════════════════════════════╝" />
-</p>
+<div align="center">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 280" width="860" height="280">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+      .bg { fill: #0d1117; }
+      .border { fill: none; stroke: #00F7FF; stroke-width: 1.5; opacity: 0.85; }
+      .border-glow { fill: none; stroke: #00F7FF; stroke-width: 3; opacity: 0.15; filter: blur(4px); }
+      .ascii { font-family: 'Share Tech Mono', monospace; font-size: 13px; fill: #00F7FF; }
+      .sub { font-family: 'Share Tech Mono', monospace; font-size: 13px; fill: #a78bfa; letter-spacing: 3px; }
+      .cursor { fill: #00F7FF; }
+    </style>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="860" height="280" class="bg" rx="12"/>
+
+  <!-- Outer glow border -->
+  <rect x="6" y="6" width="848" height="268" class="border-glow" rx="10"/>
+  <!-- Main border -->
+  <rect x="10" y="10" width="840" height="260" class="border" rx="8" filter="url(#glow)"/>
+
+  <!-- Corner decorations -->
+  <text x="18" y="30" font-family="monospace" font-size="12" fill="#00F7FF" opacity="0.6">╔</text>
+  <text x="828" y="30" font-family="monospace" font-size="12" fill="#00F7FF" opacity="0.6">╗</text>
+  <text x="18" y="268" font-family="monospace" font-size="12" fill="#00F7FF" opacity="0.6">╚</text>
+  <text x="828" y="268" font-family="monospace" font-size="12" fill="#00F7FF" opacity="0.6">╝</text>
+
+  <!-- ASCII Art Name - centered, with glow -->
+  <g filter="url(#glow)" opacity="0">
+    <animateTransform attributeName="transform" type="translate" values="0,10;0,0" dur="0.6s" fill="freeze" begin="0.2s"/>
+    <animate attributeName="opacity" values="0;1" dur="0.6s" fill="freeze" begin="0.2s"/>
+
+    <text x="430" y="68" class="ascii" text-anchor="middle" font-size="12.5">██╗   ██╗██╗███╗   ██╗ █████╗ ██╗   ██╗ █████╗ ██╗  ██╗</text>
+    <text x="430" y="84" class="ascii" text-anchor="middle" font-size="12.5">██║   ██║██║████╗  ██║██╔══██╗╚██╗ ██╔╝██╔══██╗██║ ██╔╝</text>
+    <text x="430" y="100" class="ascii" text-anchor="middle" font-size="12.5">██║   ██║██║██╔██╗ ██║███████║ ╚████╔╝ ███████║█████╔╝ </text>
+    <text x="430" y="116" class="ascii" text-anchor="middle" font-size="12.5">╚██╗ ██╔╝██║██║╚██╗██║██╔══██║  ╚██╔╝  ██╔══██║██╔═██╗ </text>
+    <text x="430" y="132" class="ascii" text-anchor="middle" font-size="12.5"> ╚████╔╝ ██║██║ ╚████║██║  ██║   ██║   ██║  ██║██║  ██╗</text>
+    <text x="430" y="148" class="ascii" text-anchor="middle" font-size="12.5">  ╚═══╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝</text>
+  </g>
+
+  <!-- Divider line -->
+  <line x1="80" y1="162" x2="780" y2="162" stroke="#00F7FF" stroke-width="0.6" opacity="0.4">
+    <animate attributeName="opacity" values="0;0.4" dur="0.4s" fill="freeze" begin="0.7s"/>
+  </line>
+
+  <!-- Subtitle -->
+  <text x="430" y="190" class="sub" text-anchor="middle" filter="url(#softglow)" opacity="0">
+    DATA SCIENTIST · ML ENGINEER · GENAI BUILDER
+    <animate attributeName="opacity" values="0;1" dur="0.8s" fill="freeze" begin="0.9s"/>
+  </text>
+
+  <!-- Blinking cursor -->
+  <rect x="416" y="200" width="8" height="2" class="cursor" opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.1s" fill="freeze" begin="1.5s"/>
+    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" begin="1.5s"/>
+  </rect>
+
+  <!-- Bottom tagline -->
+  <text x="430" y="240" font-family="monospace" font-size="11" fill="#a78bfa" text-anchor="middle" opacity="0" letter-spacing="1">
+    ⚡  Kerala, India  ·  Top 2% LeetCode  ·  Rank 108 / 6,770  ⚡
+    <animate attributeName="opacity" values="0;0.85" dur="1s" fill="freeze" begin="1.2s"/>
+  </text>
+</svg>
+
+</div>
 
 <br/>
 
@@ -10,18 +82,20 @@
 
 <img align="right" width="320" src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" />
 
-    class Vinayak:
-        name        = "Vinayak K V"
-        role        = ["Data Scientist", "ML Engineer", "GenAI Builder"]
-        location    = "Kerala, India 🇮🇳"
-        education   = "BCA | Data Science & AI — 91% 🎓"
-        focus       = ["LLMs", "AI Agents", "RAG", "MLOps"]
-        superpower  = "Raw data → Production AI systems"
-        leetcode    = "Top 2% Globally 🏆 (Rank 108 / 6,770)"
-        motto       = "Models that can't explain themselves aren't ready."
+```python
+class Vinayak:
+    name        = "Vinayak K V"
+    role        = ["Data Scientist", "ML Engineer", "GenAI Builder"]
+    location    = "Kerala, India 🇮🇳"
+    education   = "BCA | Data Science & AI — 91% 🎓"
+    focus       = ["LLMs", "AI Agents", "RAG", "MLOps"]
+    superpower  = "Raw data → Production AI systems"
+    leetcode    = "Top 2% Globally 🏆 (Rank 108 / 6,770)"
+    motto       = "Models that can't explain themselves aren't ready."
 
-        def current_mission(self):
-            return "Build AI that is explainable, scalable & impactful"
+    def current_mission(self):
+        return "Build AI that is explainable, scalable & impactful"
+```
 
 <br clear="right"/>
 
@@ -95,6 +169,7 @@
 
 <div align="center">
 
+```
 ┌─────────────────────────────────────────────────────────┐
 │                   🏅  ACHIEVEMENTS                      │
 ├──────────────────────────────┬──────────────────────────┤
@@ -103,6 +178,7 @@
 │  📊 Kaggle Python Coder      │  Badge Earned            │
 │  💡 GeeksforGeeks            │  150+ Problems | 266 pts │
 └──────────────────────────────┴──────────────────────────┘
+```
 
 </div>
 
@@ -131,15 +207,22 @@
 
 <div align="center">
 
+```
 ╔═══════════════════════════════════════════════════════╗
 ║                                                       ║
 ║   "The goal is to turn data into information,         ║
 ║    and information into insight."                     ║
 ║                                                       ║
+║                          — Carly Fiorina             ║
 ╚═══════════════════════════════════════════════════════╝
+```
 
 <img src="https://komarev.com/ghpvc/?username=vinayak533&color=00F7FF&style=for-the-badge&label=PROFILE+VIEWS" />
 
-⭐ If my work inspires you — a star means the world! 🚀
+*⭐ If my work inspires you — a star means the world! 🚀*
 
 </div>
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:1a1a2e&height=130&section=footer&animation=twinkling" />
+</p>
