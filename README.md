@@ -1,30 +1,6 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,30:302b63,60:1a1a2e,100:0f0c29&height=250&section=header&text=VINAYAK%20K%20V&fontSize=65&fontColor=00F7FF&animation=twinkling&fontAlignY=40&desc=⚡%20Data%20Scientist%20%7C%20ML%20Engineer%20%7C%20GenAI%20Builder&descAlignY=62&descSize=22&descColor=a78bfa" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&duration=2000&pause=500&color=00F7FF&center=true&vCenter=true&multiline=true&width=900&height=220&lines=╔══════════════════════════════════════════════════════════════════╗;║                                                                  ║;║    ██╗   ██╗██╗███╗   ██╗ █████╗ ██╗   ██╗ █████╗ ██╗  ██╗     ║;║    ██║   ██║██║████╗  ██║██╔══██╗╚██╗ ██╔╝██╔══██╗██║ ██╔╝     ║;║    ██║   ██║██║██╔██╗ ██║███████║ ╚████╔╝ ███████║█████╔╝      ║;║    ╚██╗ ██╔╝██║██║╚██╗██║██╔══██║  ╚██╔╝  ██╔══██║██╔═██╗      ║;║     ╚████╔╝ ██║██║ ╚████║██║  ██║   ██║   ██║  ██║██║  ██╗     ║;║      ╚═══╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝    ║;║                                                                  ║;║     [ DATA SCIENTIST · ML ENGINEER · GENAI BUILDER ]           ║;╚══════════════════════════════════════════════════════════════════╝" />
 </p>
-
-<div align="center">
-
-```
-╔══════════════════════════════════════════════════════════════════╗
-║                                                                  ║
-║    ██╗   ██╗██╗███╗   ██╗ █████╗ ██╗   ██╗ █████╗ ██╗  ██╗     ║
-║    ██║   ██║██║████╗  ██║██╔══██╗╚██╗ ██╔╝██╔══██╗██║ ██╔╝     ║
-║    ██║   ██║██║██╔██╗ ██║███████║ ╚████╔╝ ███████║█████╔╝      ║
-║    ╚██╗ ██╔╝██║██║╚██╗██║██╔══██║  ╚██╔╝  ██╔══██║██╔═██╗      ║
-║     ╚████╔╝ ██║██║ ╚████║██║  ██║   ██║   ██║  ██║██║  ██╗     ║
-║      ╚═══╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝    ║
-║                                                                  ║
-║           [ DATA SCIENTIST · ML ENGINEER · GENAI BUILDER ]      ║
-╚══════════════════════════════════════════════════════════════════╝
-```
-
-</div>
-
-<br/>
-
-<div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=22&duration=2500&pause=800&color=00F7FF&center=true&vCenter=true&width=750&lines=🤖+Building+AI+That+Explains+Itself;⚡+End-to-End+ML+Pipelines+%7C+LLMs+%7C+GenAI;🚀+From+Raw+Data+to+Production+Systems;🏆+Top+2%25+on+LeetCode+—+Rank+108+%2F+6%2C770;🧠+Making+Machines+Smarter%2C+One+Model+at+a+Time" alt="Typing SVG" />
-</div>
 
 <br/>
 
@@ -34,20 +10,18 @@
 
 <img align="right" width="320" src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" />
 
-```python
-class Vinayak:
-    name        = "Vinayak K V"
-    role        = ["Data Scientist", "ML Engineer", "GenAI Builder"]
-    location    = "Kerala, India 🇮🇳"
-    education   = "BCA | Data Science & AI — 91% 🎓"
-    focus       = ["LLMs", "AI Agents", "RAG", "MLOps"]
-    superpower  = "Raw data → Production AI systems"
-    leetcode    = "Top 2% Globally 🏆 (Rank 108 / 6,770)"
-    motto       = "Models that can't explain themselves aren't ready."
+    class Vinayak:
+        name        = "Vinayak K V"
+        role        = ["Data Scientist", "ML Engineer", "GenAI Builder"]
+        location    = "Kerala, India 🇮🇳"
+        education   = "BCA | Data Science & AI — 91% 🎓"
+        focus       = ["LLMs", "AI Agents", "RAG", "MLOps"]
+        superpower  = "Raw data → Production AI systems"
+        leetcode    = "Top 2% Globally 🏆 (Rank 108 / 6,770)"
+        motto       = "Models that can't explain themselves aren't ready."
 
-    def current_mission(self):
-        return "Build AI that is explainable, scalable & impactful"
-```
+        def current_mission(self):
+            return "Build AI that is explainable, scalable & impactful"
 
 <br clear="right"/>
 
@@ -121,7 +95,6 @@ class Vinayak:
 
 <div align="center">
 
-```
 ┌─────────────────────────────────────────────────────────┐
 │                   🏅  ACHIEVEMENTS                      │
 ├──────────────────────────────┬──────────────────────────┤
@@ -130,20 +103,7 @@ class Vinayak:
 │  📊 Kaggle Python Coder      │  Badge Earned            │
 │  💡 GeeksforGeeks            │  150+ Problems | 266 pts │
 └──────────────────────────────┴──────────────────────────┘
-```
 
-</div>
-
----
-
-## 📈 GitHub Analytics
-
-<div align="center">
-  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=vinayak533&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00F7FF&icon_color=a78bfa&text_color=ffffff&count_private=true" />
-  <img width="49%" src="https://github-readme-streak-stats.herokuapp.com/?user=vinayak533&theme=tokyonight&hide_border=true&background=0d1117&ring=00F7FF&fire=a78bfa&currStreakLabel=00F7FF" />
-</div>
-<div align="center">
-  <img width="49%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=vinayak533&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=00F7FF&text_color=ffffff" />
 </div>
 
 ---
@@ -171,22 +131,15 @@ class Vinayak:
 
 <div align="center">
 
-```
 ╔═══════════════════════════════════════════════════════╗
 ║                                                       ║
 ║   "The goal is to turn data into information,         ║
 ║    and information into insight."                     ║
 ║                                                       ║
-║                                    ║
 ╚═══════════════════════════════════════════════════════╝
-```
 
 <img src="https://komarev.com/ghpvc/?username=vinayak533&color=00F7FF&style=for-the-badge&label=PROFILE+VIEWS" />
 
-*⭐ If my work inspires you — a star means the world! 🚀*
+⭐ If my work inspires you — a star means the world! 🚀
 
 </div>
-
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:1a1a2e&height=130&section=footer&animation=twinkling" />
-</p>
