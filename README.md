@@ -1,69 +1,68 @@
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:000428,50:004e92,100:000428&height=200&section=header&text=VINAYAK%20K%20V&fontSize=45&fontColor=00F7FF&animation=twinkling" />
-</p>
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1a2e,50:16213e,100:0f3460&height=170&section=header&text=Vinayak%20K%20V&fontSize=40&fontColor=ffffff&fontAlign=50&fontAlignY=38&desc=AI%2FML%20Engineer&descAlign=50&descAlignY=58&descSize=17" width="100%"/>
+</div>
 
-<h1 align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&size=36&duration=3000&pause=1000&color=00F7FF&center=true&vCenter=true&width=900&lines=Hi%2C+I%27m+Vinayak+K+V;Data+Scientist+%7C+ML+Engineer+%7C+GenAI+Builder;Building+AI+Agents+%26+LLM+Apps" alt="Typing SVG" />
-</h1>
+<div align="center">
+  <a href="mailto:vinayakkvjob@gmail.com"><img src="https://img.shields.io/badge/Email-333333?style=flat-square&logo=gmail&logoColor=white" /></a>
+  <a href="https://www.linkedin.com/in/vinayak-kv-ds"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" /></a>
+  <a href="https://vinayak533.github.io/VINAYAK_PORTFOLIO/"><img src="https://img.shields.io/badge/Portfolio-000000?style=flat-square&logo=vercel&logoColor=white" /></a>
+</div>
 
----
+<br/>
 
-## 🧠 About Me
+## About
 
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=20&duration=3000&pause=1000&color=36BCF7&center=true&vCenter=true&width=800&lines=Building+End-to-End+AI+Systems;Specialized+in+GenAI,+LLMs+%26+AI+Agents;Creating+Scalable+ML+Solutions;Exploring+RAG+Pipelines+%26+AI+Infrastructure" alt="About Typing SVG" />
-</p>
+AI/ML Engineer based in Kochi, India, currently leading AI infrastructure development at **AMnova Technologies**, where I build the LLM routing layer, multi-agent runtime, and memory systems for a multi-channel e-commerce automation platform.
 
-🚀 **Data Scientist & ML Engineer** focused on building **end-to-end AI systems**
-🤖 Specialized in **Generative AI, LLMs, and AI Agents**
-📈 Delivering **scalable, production-ready ML solutions** with real-world impact
-⚡ Exploring **RAG pipelines, autonomous agents, and modern ML infrastructure**
+My focus is on production-grade AI systems: multi-model routing to balance cost and quality, clear separation between agent proposals and human approval, and infrastructure that holds up under real usage rather than demos.
 
----
+## Experience
 
-## 🎯 What I'm Building
+**AI/ML Engineer — AMnova Technologies**
+*AI infrastructure lead, multi-tenant e-commerce automation platform*
 
-✔️ AI Agents & autonomous workflows
-✔️ LLM-powered applications
-✔️ End-to-end ML pipelines
-✔️ Scalable AI systems for real-world use cases
+- Built a multi-model LLM routing layer (Claude Opus / Groq Llama 4 / GPT-4o mini) balancing cost, latency, and output quality across task types
+- Designed a `pgvector`-based memory layer and an `agent_actions` table with Supabase row-level security for multi-tenant isolation
+- Built a suite of production AI agents (Inventory, Orders, Support, Pricing) under an agents-propose, humans-approve architecture
+- Designed an onboarding agent using a LangGraph subgraph with direct-execution tools
 
----
+**Prior Experience**
+Amdox Technologies, Cognifyz Technologies — Internships
 
-## 🐍 GitHub Contribution Snake
+## Selected Projects
 
-<p align="center">
-  <img src="https://github.com/Platane/snk/raw/output/github-contribution-grid-snake-dark.svg" alt="GitHub Contribution Snake" />
-</p>
+**Bank Churn Intelligence Platform** (RetainX)
+Full-stack churn prediction system across telecom, e-commerce, and banking domains, with an agent-based analysis layer and a chatbot interface for exploring predictions.
 
----
+**InForge-AI**
+_Add a one-line description here._
 
-## 🌐 Connect With Me
+**PredictLab**
+_Add a one-line description here._
 
-<p align="center">
-  <a href="mailto:vinayakkvjob@gmail.com">
-    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
-  </a>
-  &nbsp;
-  <a href="https://www.linkedin.com/in/vinayak-kv-ds">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
-  </a>
-  &nbsp;
-  <a href="https://vinayak533.github.io/VINAYAK_PORTFOLIO/">
-    <img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" />
-  </a>
-</p>
+## Tech Stack
 
----
+| | |
+|---|---|
+| **Languages** | Python, TypeScript |
+| **AI/ML** | LLM orchestration, RAG, multi-agent systems, LangGraph |
+| **Backend** | FastAPI, Supabase |
+| **Frontend** | Next.js |
+| **Cloud** | AWS (SageMaker, S3, EC2) |
 
-## ⚡ Quote
+## GitHub Activity
 
-> *"The goal is to turn data into information, and information into insight."*
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=vinayak533&show_icons=true&hide_border=true&theme=default" height="165"/>
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=vinayak533&hide_border=true&theme=default" height="165"/>
+</div>
 
----
+<div align="center">
+  <img src="https://github.com/Platane/snk/raw/output/github-contribution-grid-snake.svg" width="100%"/>
+</div>
 
-<p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:000428,50:004e92,100:000428&height=100&section=footer" />
-</p>
+<br/>
 
-<p align="center">⭐ <em>If you like my work, consider starring my repositories!</em> 🚀</p>
+<div align="center">
+  <sub>Kochi, India</sub>
+</div>
