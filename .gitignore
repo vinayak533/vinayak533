@@ -1,0 +1,5 @@
+# local preview only — not part of the profile
+preview.html
+
+# local editor / agent tooling
+.claude/
