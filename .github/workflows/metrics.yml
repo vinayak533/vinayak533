@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -14,17 +17,20 @@ jobs:
     steps:
       - uses: lowlighter/metrics@latest
         with:
-          token: ${{ secrets.METRICS_TOKEN }}
+          # Falls back to the built-in token if METRICS_TOKEN is not set,
+          # so the workflow still produces output either way.
+          token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
+          # Commit with the built-in token so this push does NOT re-trigger
+          # the workflow (a PAT-authored commit would loop forever).
+          committer_token: ${{ secrets.GITHUB_TOKEN }}
           user: vinayak533
           filename: github-metrics.svg
           template: classic
-          base: header, activity, community, repositories, metadata
+          base: ""
           config_timezone: Asia/Kolkata
+          config_display: large
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
           plugin_languages: yes
           plugin_languages_details: percentage
           plugin_languages_limit: 8
-          plugin_achievements: yes
-          plugin_achievements_threshold: B
-          plugin_achievements_display: compact
