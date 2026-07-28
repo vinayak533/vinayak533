@@ -50,23 +50,25 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 const WEEKDAYS = { 1: "Mon", 3: "Wed", 5: "Fri" };
 
 // ------------------------------------------------------------------ palettes
+// ramps run dim -> bright so the grid still reads as a heat map, and the snake
+// carries the same violet -> cyan -> magenta aurora as the hero wordmark
 const THEMES = {
   dark: {
-    cells: ["#131a2b", "#173a45", "#1d6272", "#2b93a6", "#4FD1E0"],
-    snake: ["#3d6d9e", "#3aa3bb", "#4FD1E0"],
-    label: "#5d6b85",
-    caption: "#39445c",
+    cells: ["#131a2b", "#22306b", "#3a48b5", "#5C6BFF", "#22D3EE"],
+    snake: ["#7C5CFF", "#22D3EE", "#F472B6"],
+    label: "#64748b",
+    caption: "#475569",
   },
   light: {
-    cells: ["#eef1f6", "#cfe6ec", "#9fcfda", "#5aa8bd", "#2b7c92"],
-    snake: ["#4a7fb5", "#3f9cb5", "#2fb4c8"],
+    cells: ["#eef1f8", "#d5d9f5", "#a9b0ee", "#7C8CE8", "#3FB6CE"],
+    snake: ["#6A4CE0", "#1FA8C4", "#DB5FA0"],
     label: "#7b8798",
     caption: "#98a3b3",
   },
 };
 
 // one colour per contribution level, so a busy day bursts differently to a quiet one
-const BURST = ["#4FD1E0", "#4FD1E0", "#5FBF9A", "#8AA0E0", "#C88AC0"];
+const BURST = ["#22D3EE", "#22D3EE", "#4F46E5", "#7C5CFF", "#F472B6"];
 
 const LEVEL = {
   NONE: 0,

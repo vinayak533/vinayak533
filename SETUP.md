@@ -9,7 +9,6 @@ Copy everything in this folder into your `vinayak533/vinayak533` repo:
 | `tools/` | repo root — the generators |
 | `.gitignore` | repo root |
 | `.github/workflows/snake.yml` | same path |
-| `.github/workflows/profile-3d-contrib.yml` | same path |
 | `.github/workflows/metrics.yml` | same path |
 
 `preview.html` is only for local previewing — it's gitignored, don't copy it.
@@ -43,13 +42,21 @@ locally, then commit the SVG.
 
 | Panel | Command | Notes |
 |---|---|---|
-| `assets/hero.svg` | `python tools/gen_hero.py` | Full-width terminal: types a short program, runs it, and prints **AI/ML ENGINEER** as the program's own stdout. No name anywhere — the headline *is* the title. |
-| `assets/about.svg` | `python tools/gen_about.py` | The About Me story told twice: first typed out as `about.html`, then "rendered" as serif prose. Edit `STORY` at the top of the script — it feeds **both** halves, so they cannot drift. `*asterisks*` become `<em>` in the markup and the accent colour in the prose. |
+| `assets/hero.svg` | `python tools/gen_hero.py` | Aurora banner: a drifting multi-colour gradient field with the **AI/ML ENGINEER** wordmark sweeping violet → cyan → magenta, over the one-line pitch. No name anywhere — the headline *is* the title. |
+| `assets/about.svg` | `python tools/gen_about.py` | The About Me story as serif prose, fading up line by line. Edit `STORY` at the top of the script; `*asterisks*` mark the phrases that take the aurora gradient. |
 | `assets/snake-dark.svg`<br />`assets/snake-light.svg` | `node tools/gen_snake.mjs` | Custom scattered snake (below), one file per theme. |
 
-The whole design runs on one accent colour (`#4FD1E0`) over deep navy (`#05091a`),
-with hairline rules instead of glows. There are deliberately no blur/glow filters in
-any panel — if you add one, it will stand out badly against the rest.
+**The palette is the design.** Everything runs on one aurora ramp —
+violet `#7C5CFF` → cyan `#22D3EE` → magenta `#F472B6` over near-black `#070b18`,
+with indigo `#4F46E5` as the fourth blob. The hero wordmark, the `<em>` phrases in
+the About prose, the snake's body and the repo-star badges all pull from that same
+ramp, which is what keeps a page of unrelated third-party images reading as one design.
+If you add anything new, colour it from that list.
+
+**Both panels animate once, then stop.** The entrances use `both` fill and no
+`infinite` — only the ambient layers (aurora drift, wordmark sweep, the snake) loop.
+A header that re-runs its entrance every 20 seconds is the single most common thing
+that makes a profile look cheap; don't reintroduce it.
 
 Preview them without pushing:
 
@@ -69,7 +76,7 @@ step through its animation timeline.
   L-shaped or staircase, so the path reads as a hunt rather than a sweep.
 - **Colour burst on contact.** Each cell that gets eaten fires a soft bloom and a thin
   expanding shockwave ring, keyed to that day's contribution level
-  — cyan → green → indigo → mauve.
+  — cyan → indigo → violet → magenta.
 - **Slow, clean pacing.** Tempo is set by `SEC_PER_STEP` (0.075s per cell) and clamped to a
   40–80s loop, on a GitHub-style calendar with month and weekday labels.
 - **Seamless loop.** The route closes back on its start, so the snake wraps without a jump.
@@ -114,11 +121,27 @@ rendered as broken images.
 
 ## Optional tweaks
 
-- **3D graph style**: the action writes several variants into `profile-3d-contrib/`. The
-  README uses `profile-season-animate.svg`; `profile-night-rainbow.svg`,
-  `profile-night-view.svg` and `profile-gitblock.svg` are also generated. There is no
-  `profile-custom.svg` — that needs a `SETTING_JSON` file, which this setup doesn't use.
-- **Hero code**: the lines shown on screen are the `LINES` list in `tools/gen_hero.py`.
-- **Hero timing**: `LOOP`, `TYPE_SLOTS`, `BOX_A/B`, `CHAR_A`, `HOLD_B` control the pacing.
-- **About timing**: `TYPE_A/B` is the code-typing window, `CODE_OUT_A/B` the hand-off,
-  `PROSE_A` / `PROSE_STEP` how the sentences stagger in.
+- **Hero pitch**: the one-liner under the wordmark is `PITCH` in `tools/gen_hero.py`.
+  It is the single most-read string on the profile — it should say what you build and
+  who it is for, not list technologies.
+- **Hero motion**: `BLOBS` controls the aurora — each entry is
+  `(cx, cy, rx, ry, colour, drift-x, drift-y, seconds)`. The durations are deliberately
+  co-prime-ish (23/26/29/31/37s) so the field never visibly repeats.
+- **About stagger**: `STEP` is the delay between lines; `PROSE_WRAP` the line length.
+
+## Adding a languages row back
+
+The stack is deliberately short, but recruiters and ATS keyword-filters screen on
+language names before a human ever sees the page. `Python` is in there for exactly
+that reason. To add the rest, drop this above the GenAI row in `README.md`:
+
+```html
+<p align="center">
+  <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" />
+  <img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white" />
+  <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white" />
+  <img src="https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" />
+</p>
+```
