@@ -10,27 +10,20 @@
 
 ## 🧠 About Me
 
-I build **AI systems that actually run in production** — not notebooks that die after the demo.
-
-Most of my work sits at the intersection of three things: **orchestrating LLMs into multi-agent systems** that can reason over real data, **wrapping models in interfaces people can actually use**, and **the unglamorous plumbing** that keeps both alive.
+**AI/ML Engineer.** I build LLM systems end to end — retrieval, agent orchestration, and the deployment plumbing that turns a notebook into something you can actually call.
 
 ```python
-class Vinayak:
-    role     = "AI/ML Engineer"
-    focus    = ["multi-agent systems", "RAG pipelines", "applied ML"]
-    shipping = "LLM apps that survive contact with real users"
-    domains  = ["healthcare", "finance", "retail analytics"]
+focus     = ["multi-agent systems", "RAG pipelines", "applied ML"]
+domains   = ["healthcare", "finance", "retail analytics"]
+exploring = "agent memory + evaluation harnesses"
 ```
 
-**What I'm usually deep in:**
-
-- 🤖 **Agentic systems** — multi-agent orchestration for analytics, stock research, and autonomous reporting
-- 🔎 **RAG & retrieval** — grounding LLMs in real data instead of letting them guess
-- 🗣️ **Natural-language interfaces** — NL→SQL, voice + vision assistants, conversational analytics
-- ⚖️ **LLM evaluation** — automated head-to-head benchmarking, because "it feels better" isn't a metric
-- 🚢 **Deployment** — FastAPI, Streamlit, Docker, CI/CD; the part most ML projects skip
-
-**Currently exploring:** agent memory architectures, evaluation harnesses for non-deterministic systems, and how far local models can go before a frontier API is genuinely necessary.
+|  |  |
+|:--|:--|
+| 🤖 **Agents** | Multi-agent orchestration for analytics and research workflows |
+| 🔎 **RAG** | Grounding LLMs in real data instead of letting them guess |
+| 🗣️ **NL interfaces** | NL→SQL, voice and vision assistants |
+| ⚖️ **Evaluation** | Head-to-head LLM benchmarking — "it feels better" isn't a metric |
 
 ---
 
