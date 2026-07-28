@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/vinayak533/vinayak533/main/assets/hero.svg" width="100%" alt="Vinayak K V — Data Scientist, ML Engineer, GenAI Builder" />
+  <img src="https://raw.githubusercontent.com/vinayak533/vinayak533/main/assets/hero.svg" width="100%" alt="Vinayak K V — AI/ML Engineer" />
 </p>
 
 <p align="center">
@@ -16,7 +16,7 @@ Most of my work sits at the intersection of three things: **orchestrating LLMs i
 
 ```python
 class Vinayak:
-    role     = "Data Scientist / ML Engineer"
+    role     = "AI/ML Engineer"
     focus    = ["multi-agent systems", "RAG pipelines", "applied ML"]
     shipping = "LLM apps that survive contact with real users"
     domains  = ["healthcare", "finance", "retail analytics"]
@@ -37,7 +37,7 @@ class Vinayak:
 ## 🐍 Contribution Snake
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/vinayak533/vinayak533/output/snake.svg" alt="Contribution Snake" width="100%" />
+  <img src="https://raw.githubusercontent.com/vinayak533/vinayak533/main/assets/snake.svg" alt="Contribution Snake" width="100%" />
 </p>
 
 ---
