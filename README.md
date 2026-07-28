@@ -63,7 +63,7 @@ class Vinayak:
 ## 🧊 3D Contribution Graph
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/vinayak533/vinayak533/main/profile-3d-contrib/profile-green-animate.svg" alt="3D Contribution Graph" width="100%" />
+  <img src="https://raw.githubusercontent.com/vinayak533/vinayak533/main/profile-3d-contrib/profile-custom.svg" alt="3D Contribution Graph" width="100%" />
 </p>
 
 ---
