@@ -1,5 +1,4 @@
 <div align="center">
-
 <img src="https://raw.githubusercontent.com/vinayak533/vinayak533/main/assets/hero.svg" width="100%" alt="Vinayak K V — AI/ML Engineer building multi-agent LLM systems in production" />
 
 <br/>
@@ -12,7 +11,7 @@
 
 <br />
 
-## About me
+## About Me
 
 I build AI systems that make decisions, not just predictions.
 
@@ -20,14 +19,14 @@ Every model I've shipped started the same way: a messy dataset and a question no
 
 <br />
 
-## Current focus
+## Current Focus
 
 **AI/ML Engineer at AMnova Technologies** (Kochi, India), currently building:
 
-- A multi-agent LLM pipeline for production workloads
-- An LLM routing layer across Claude / Llama / GPT
-- RAG on pgvector for retrieval-grounded responses
-- The FastAPI services that put all of it in front of real users
+- 🔀 A multi-agent LLM pipeline for production workloads
+- 🧭 An LLM routing layer across Claude / Llama / GPT
+- 🔍 RAG on pgvector for retrieval-grounded responses
+- ⚙️ The FastAPI services that put all of it in front of real users
 
 **Open to AI/ML and LLM engineering roles** — remote or Bangalore / Kochi / Hyderabad.
 
@@ -35,15 +34,15 @@ Every model I've shipped started the same way: a messy dataset and a question no
 
 ## Highlights
 
-- **Production LLM infrastructure** — multi-model router with cost/latency-aware fallback, agent action logging, and a pgvector memory layer serving live support agents
-- **Multi-agent systems** — 8-agent analytics platform (InForge-AI) that turns a raw dataset into business intelligence with no analyst in the loop
-- **ML that ships** — churn prediction platform at 87%+ AUC-ROC (XGBoost + SMOTE), wrapped in LLM-generated plain-English explanations
-- **Top 2% globally on LeetCode** — the data-structures fundamentals under the AI work
-- **Anthropic AI Fluency certified** · HackerRank Orchestrate Hackathon finalist
+- 🚦 **Production LLM infrastructure** — multi-model router with cost/latency-aware fallback, agent action logging, and a pgvector memory layer serving live support agents
+- 🤖 **Multi-agent systems** — 8-agent analytics platform (InForge-AI) that turns a raw dataset into business intelligence with no analyst in the loop
+- 📈 **ML that ships** — churn prediction platform at 87%+ AUC-ROC (XGBoost + SMOTE), wrapped in LLM-generated plain-English explanations
+- 🏆 **Top 2% globally on LeetCode** — the data-structures fundamentals under the AI work
+- ✅ **Anthropic AI Fluency certified** · HackerRank Orchestrate Hackathon finalist
 
 <br />
 
-## Technical skills
+## Technical Skills
 
 **AI / ML & Generative AI**
 
@@ -55,7 +54,7 @@ Every model I've shipped started the same way: a messy dataset and a question no
   <img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white" alt="OpenAI" />
 </p>
 
-**Backend & data**
+**Backend & Data**
 
 <p align="left">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
@@ -72,13 +71,13 @@ Every model I've shipped started the same way: a messy dataset and a question no
 
 <br />
 
-## Featured projects
+## Featured Projects
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### <a href="https://github.com/vinayak533/InForge-AI">InForge-AI</a>
+### [InForge-AI](https://github.com/vinayak533/InForge-AI)
 
 Eight cooperating agents take a raw dataset in and hand business intelligence back out.
 
@@ -91,7 +90,7 @@ Eight cooperating agents take a raw dataset in and hand business intelligence ba
 </td>
 <td width="50%" valign="top">
 
-### <a href="https://github.com/vinayak533/AI-Multi-Agent-Stock-Analysis-Trading-System">Multi-Agent Stock Analysis</a>
+### [Multi-Agent Stock Analysis](https://github.com/vinayak533/AI-Multi-Agent-Stock-Analysis-Trading-System)
 
 A desk of agents that reads live market data, debates it, and produces a defensible trading view.
 
@@ -106,7 +105,7 @@ A desk of agents that reads live market data, debates it, and produces a defensi
 <tr>
 <td width="50%" valign="top">
 
-### <a href="https://github.com/vinayak533/NL2SQL-AI-Assistant">NL2SQL AI Assistant</a>
+### [NL2SQL AI Assistant](https://github.com/vinayak533/NL2SQL-AI-Assistant)
 
 A FastAPI service that turns a plain-English question into the SQL that answers it, validates it, then runs it.
 
@@ -119,7 +118,7 @@ A FastAPI service that turns a plain-English question into the SQL that answers 
 </td>
 <td width="50%" valign="top">
 
-### <a href="https://github.com/vinayak533/bank-churn-intelligence-platform">Bank Churn Intelligence</a>
+### [Bank Churn Intelligence](https://github.com/vinayak533/bank-churn-intelligence-platform)
 
 87%+ AUC-ROC churn prediction (XGBoost + SMOTE), served as a web app that explains each prediction in plain language via LLaMA 3.
 
@@ -135,9 +134,9 @@ A FastAPI service that turns a plain-English question into the SQL that answers 
 
 <br />
 
-## What I can bring to a team
+## What I Can Bring to a Team
 
-| | |
+| Area | Details |
 |---|---|
 | **Agentic systems** | LangGraph orchestration, tool use, state machines, human-in-the-loop checkpoints |
 | **Retrieval** | Chunking strategy, pgvector / FAISS, hybrid search, evaluation of retrieval quality |
@@ -146,7 +145,7 @@ A FastAPI service that turns a plain-English question into the SQL that answers 
 
 <br />
 
-## GitHub activity
+## GitHub Activity
 
 <p align="center">
   <img height="165" src="https://github-readme-stats.vercel.app/api?username=vinayak533&show_icons=true&theme=tokyonight&hide_border=true&bg_color=070b18&title_color=22D3EE&icon_color=6366F1&text_color=c9d1d9" alt="GitHub stats" />
@@ -161,15 +160,18 @@ A FastAPI service that turns a plain-English question into the SQL that answers 
 
 ---
 
-## Connect with me
+## Connect With Me
 
 <p align="center">
   <a href="https://www.linkedin.com/in/vinayak-kv-ds">
-    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
   <a href="https://vinayak533.github.io/VINAYAK_PORTFOLIO/">
-    <img src="https://img.shields.io/badge/Portfolio-070b18?style=for-the-badge&logo=vercel&logoColor=22D3EE" alt="Portfolio" /></a>
+    <img src="https://img.shields.io/badge/Portfolio-070b18?style=for-the-badge&logo=vercel&logoColor=22D3EE" alt="Portfolio" />
+  </a>
   <a href="mailto:vinayakkvjob@gmail.com">
-    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
+  </a>
   <img src="https://komarev.com/ghpvc/?username=vinayak533&label=visitors&color=6366F1&style=for-the-badge" alt="Profile views" />
 </p>
 
