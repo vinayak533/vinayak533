@@ -42,6 +42,17 @@ Every model I've shipped started the same way: a messy dataset and a question no
 
 <br />
 
+## Agent Routing Network
+
+<div align="center">
+  <a href="https://vinayak533.github.io/agent-network/">
+    <img src="https://raw.githubusercontent.com/vinayak533/vinayak533/main/assets/network-preview.png" width="100%" alt="Live agent routing network visualization" />
+  </a>
+  <p><em>🔗 <a href="https://vinayak533.github.io/agent-network/">Open the live scene</a> — a router handing work to 8 agents, rendered in real time.</em></p>
+</div>
+
+<br />
+
 ## Technical Skills
 
 **AI / ML & Generative AI**
