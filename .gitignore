@@ -3,3 +3,10 @@ preview*.html
 
 # local editor / agent tooling
 .claude/
+
+# Local design review dependencies and captures
+.preview-browser/
+.preview-deps/
+.preview-output/
+.preview-output-script.py
+__pycache__/
