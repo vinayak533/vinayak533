@@ -9,7 +9,7 @@ The README is the profile. Every panel is a generated SVG; the only scheduled da
 - **Pills** — tinted fill, gradient border, filled icon disc.
 - **Dot matrix** — the hero butterfly (thousands of blue-noise stippled dots, dense and white at the body, sparse with violet margins at the wing edges) and the activity panel (one column per week; lit cells proportional to that week's real total).
 - **Type** — GitHub's system sans and mono stacks, with one italic serif accent per headline (Georgia stack). No embedded fonts.
-- **Motion** — slow and optional: name sheen, butterfly wing flap, float, dot twinkle and drifting dust, agent-loop steps lighting in sequence, the loom.ai request pulse and event flow, availability pings. CSS honours `prefers-reduced-motion` and motion-only layers are hidden. Every panel is complete on its first frame.
+- **Motion** — slow and optional: name sheen, butterfly wing flap (2.4 s), float, dot twinkle and violet particles shed on each wingbeat, agent-loop steps lighting in sequence, the loom.ai request pulse and event flow, availability pings. CSS honours `prefers-reduced-motion` and motion-only layers are hidden. Every panel is complete on its first frame.
 - **Responsive** — each panel has a 880 px desktop and a 400 px compact variant, chosen by `<picture>` media queries: compact below 640 px and between 768–959 px (where GitHub's profile sidebar narrows the README column). Art renders between 0.65× and 1.45× at every width.
 
 ## Files

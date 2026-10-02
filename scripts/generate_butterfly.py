@@ -8,7 +8,8 @@ the body and wing bases, sparser, smaller and dimmer toward the wing edges,
 with violet on the outer margins. Points are blue-noise sampled (dart throwing
 with a density-dependent minimum distance) from a fixed seed, so rebuilds are
 byte-stable. Motion is CSS inside the SVG: wings flap as scaleX about the body
-axis, the whole butterfly floats, dots twinkle and dust drifts off the wings.
+axis, the whole butterfly floats, dots twinkle, and violet particles shed on
+each wingbeat drift away behind the wings and fade.
 All of it stops under prefers-reduced-motion and the first frame is complete.
 
 tools/profile/build.py imports `butterfly()` to draw the same art inside the
@@ -23,6 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 VB_W, VB_H = 520, 420
 SEED = 533
 BG = "#000000"
+FLAP, FLOAT = 2.4, 13  # seconds: one wingbeat, one float loop
 INK = {"white": "#FFFFFF", "soft": "#DCD7EA", "violet": "#A78BFA", "deep": "#7C3AED"}
 
 # Left-wing outlines (body axis at x = 0, y grows downward) as closed Catmull-Rom control points.
@@ -306,18 +308,26 @@ def circles(dots, twinkle, uid, rng):
     return "".join(out)
 
 
-def dust(rng, wings, uid, n=34):
-    """Specks that leave the outer margins and fade, each on its own outward heading."""
+def particles(rng, wings, uid, n=96):
+    """Violet specks shed on each wingbeat: each leaves a wing as it opens, then drifts out,
+    shrinks and fades behind the butterfly. Delays are multiples of the flap period, so every
+    particle launches when the wings are open, about half of them on each beat."""
     out = []
     for i in range(n):
         w = wings[i % len(wings)]
         rx, ry = w.root
-        far = [p for p in w.outline if math.hypot(p[0] - rx, p[1] - ry) > .7 * max(w.R)]
-        x, y = rng.choice(far)
-        ang = math.degrees(math.atan2(y - ry, x - rx)) + rng.uniform(-35, 35)
-        col = INK["violet"] if rng.random() < .5 else INK["soft"]
-        out.append(f'<g transform="translate({x:.1f} {y:.1f}) rotate({ang:.0f})"><circle class="{uid}d{i % 4}" '
-                   f'r="{rng.uniform(.8, 1.4):.2f}" fill="{col}" style="animation-delay:{-rng.uniform(0, 9):.2f}s"/></g>')
+        while True:
+            x, y = rng.uniform(w.box[0], w.box[2]), rng.uniform(w.box[1], w.box[3])
+            if w.inside(x, y) and w.t(x, y) > .5:
+                break
+        ox, oy = x - rx, y - ry
+        ln = math.hypot(ox, oy) or 1
+        hx, hy = ox / ln, oy / ln + .45
+        ang = math.degrees(math.atan2(hy, hx)) + rng.uniform(-30, 30)
+        col = INK["deep"] if rng.random() < .3 else INK["violet"]
+        delay = rng.choice((0, FLAP)) + rng.uniform(-.3, .3)
+        out.append(f'<g transform="translate({x:.1f} {y:.1f}) rotate({ang:.0f})"><circle class="{uid}p{rng.randrange(4)}" '
+                   f'r="{rng.uniform(1.3, 2.4):.2f}" fill="{col}" style="animation-delay:{-delay:.2f}s"/></g>')
     return "".join(out)
 
 
@@ -329,22 +339,22 @@ def build(uid="bf"):
     rh = Wing(HIND, rng, mirror=True, scale=.9, rot=4, jitter=6, veins=6)
     wings = (lh, rh, lf, rf)
     fill = {lf: 26000, rf: 26000, lh: 20000, rh: 20000}
-    parts = [f'<g class="{uid}a">' + circles(ambient_dots(rng, wings), .35, uid, rng) + "</g>"]
+    parts = [f'<g class="{uid}a">' + circles(ambient_dots(rng, wings), .35, uid, rng) + "</g>",
+             f'<g class="motion">{particles(rng, wings, uid)}</g>']  # drawn under the wings: they recede behind them
     for w, cls in ((lh, "h"), (rh, "h"), (lf, "w"), (rf, "w")):
         parts.append(f'<g class="{uid}{cls}">{circles(wing_dots(rng, w, fill[w]), .1, uid, rng)}</g>')
     parts.append(f'<g class="{uid}b">{circles(body_dots(rng), .05, uid, rng)}</g>')
-    parts.append(f'<g class="motion">{dust(rng, wings, uid)}</g>')
     u = uid
     css = (f"@keyframes {u}f{{0%,100%{{transform:scaleX(1)}}50%{{transform:scaleX(.3)}}}}"
-           f".{u}w,.{u}h{{transform-origin:0 0;animation:{u}f 1.6s ease-in-out infinite}}.{u}h{{animation-delay:.08s}}"
+           f".{u}w,.{u}h{{transform-origin:0 0;animation:{u}f {FLAP}s ease-in-out infinite}}.{u}h{{animation-delay:.12s}}"
            f"@keyframes {u}m{{0%,100%{{transform:translate(0,0) rotate(0)}}25%{{transform:translate(6px,-8px) rotate(1.5deg)}}"
            f"50%{{transform:translate(1px,-13px) rotate(0)}}75%{{transform:translate(-6px,-6px) rotate(-1.5deg)}}}}"
-           f".{u}m{{transform-origin:0 0;animation:{u}m 9s ease-in-out infinite}}"
+           f".{u}m{{transform-origin:0 0;animation:{u}m {FLOAT}s ease-in-out infinite}}"
            f"@keyframes {u}t{{0%,100%{{opacity:1}}50%{{opacity:.18}}}}"
            + "".join(f".{u}t{i}{{animation:{u}t {2.4 + .5 * i:.1f}s ease-in-out {-.7 * i:.1f}s infinite}}" for i in range(6))
-           + "".join(f"@keyframes {u}d{i}{{0%{{transform:translate(0,0);opacity:0}}15%{{opacity:.9}}"
-                     f"100%{{transform:translate({28 + 12 * i}px,{(-1) ** i * 6}px);opacity:0}}}}"
-                     f".{u}d{i}{{opacity:0;animation:{u}d{i} {5.5 + 1.2 * i:.1f}s ease-out infinite}}" for i in range(4)))
+           + "".join(f"@keyframes {u}p{i}{{0%{{transform:translate(0,0) scale(1);opacity:0}}8%{{opacity:1}}"
+                     f"50%{{opacity:.7}}100%{{transform:translate({46 + 16 * i}px,{(-1) ** i * 12}px) scale(.3);opacity:0}}}}"
+                     f".{u}p{i}{{opacity:0;animation:{u}p{i} {2 * FLAP}s cubic-bezier(.2,.6,.4,1) infinite}}" for i in range(4)))
     return css, "".join(parts)
 
 
