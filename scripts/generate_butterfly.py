@@ -365,6 +365,69 @@ def butterfly(cx, cy, scale, tilt=-6, uid="bf"):
                  f'<g transform="scale({scale:g}) rotate({tilt:g})">{art}</g></g></g>')
 
 
+def smooth(v):
+    v = max(0.0, min(1.0, v))
+    return v * v * (3 - 2 * v)
+
+
+def flying(path, depth, w, h, rest, period=30, keys=120, trail=520, stars=150, uid="bf"):
+    """The butterfly on a looping flight over a w x h banner: (css, svg fragment).
+
+    path(u) -> (x, y) for u in [0, 1) is the closed flight line; depth(x, y) -> 0..1 sets how near
+    it is (far = small and dim, so it sits back behind the text). It banks into each turn, carries
+    a soft violet light, leaves a stardust trail in banner space and crosses a faint starfield.
+    rest = (x, y, scale) is where it stays when motion is reduced."""
+    css, art = build(uid)
+    rng = random.Random(SEED + 1)
+    u_ = uid
+
+    def pose(u):
+        x, y = path(u % 1)
+        x1, y1 = path((u - .004) % 1)
+        x2, y2 = path((u + .004) % 1)
+        dx, dy = x2 - x1, y2 - y1
+        bank = 30 * dx / (math.hypot(dx, dy) or 1) - 6
+        d = depth(x, y)
+        return x, y, bank, .2 + .24 * d, .5 + .5 * d, d
+
+    frames = []
+    for k in range(keys + 1):
+        x, y, bank, sc, op, _ = pose(k / keys)
+        frames.append(f"{100 * k / keys:.2f}%{{transform:translate({x:.1f}px,{y:.1f}px) rotate({bank:.1f}deg) "
+                      f"scale({sc:.3f});opacity:{op:.2f}}}")
+    css += (f"@keyframes {u_}fly{{{''.join(frames)}}}.{u_}fly{{transform-origin:0 0;animation:{u_}fly {period}s linear infinite}}"
+            f"@keyframes {u_}s{{0%{{transform:translate(0,0) scale(1);opacity:0}}.8%{{opacity:1}}8%{{opacity:.75}}"
+            f"20%{{transform:translate(var(--dx),var(--dy)) scale(.3);opacity:0}}100%{{opacity:0}}}}")
+    # Stardust: each speck appears where the butterfly is at that moment of the loop, then sinks and fades.
+    dust = []
+    for i in range(trail):
+        u = (i + rng.random()) / trail
+        x, y, _, sc, _, d = pose(u)
+        spread = 110 * sc
+        x, y = x + rng.gauss(0, spread * .6), y + rng.gauss(0, spread * .45)
+        a = rng.uniform(0, 2 * math.pi)
+        dist = rng.uniform(18, 60) * (.6 + .6 * d)
+        col = INK["deep"] if rng.random() < .35 else INK["violet"]
+        dust.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{rng.uniform(.9, 2.2) * (.75 + .5 * d):.2f}" fill="{col}" '
+                    f'class="{u_}sd" style="--dx:{dist * math.cos(a):.0f}px;--dy:{dist * abs(math.sin(a)) * .8 + 22:.0f}px;'
+                    f'animation-delay:{u * period - period:.2f}s"/>')
+    css += (f".{u_}sd{{opacity:0;transform-box:fill-box;transform-origin:center;"
+            f"animation:{u_}s {period}s ease-out infinite}}")
+    sky = []
+    for _ in range(stars):
+        sky.append(f'<circle cx="{rng.uniform(0, w):.1f}" cy="{rng.uniform(0, h):.1f}" r="{rng.uniform(.4, 1.0):.2f}" '
+                   f'fill="{INK["violet"] if rng.random() < .4 else INK["soft"]}" fill-opacity="{rng.uniform(.12, .4):.2f}"'
+                   f' class="{u_}t{rng.randrange(6)}"/>')
+    rx, ry, rs = rest
+    glow = (f'<defs><radialGradient id="{u_}glow"><stop stop-color="{INK["deep"]}" stop-opacity=".45"/>'
+            f'<stop offset="1" stop-color="{INK["deep"]}" stop-opacity="0"/></radialGradient></defs>'
+            f'<circle r="250" fill="url(#{u_}glow)" opacity=".4"/>')
+    body = (f'<g>{"".join(sky)}</g><g class="motion">{"".join(dust)}</g>'
+            f'<g class="{u_}fly" transform="translate({rx:g} {ry:g}) rotate(-6) scale({rs:g})">{glow}'
+            f'<g class="{u_}m">{art}</g></g>')
+    return css, body
+
+
 def standalone():
     css, art = butterfly(VB_W / 2, VB_H / 2 + 6, .9)
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{VB_W}" height="{VB_H}" viewBox="0 0 {VB_W} {VB_H}" '

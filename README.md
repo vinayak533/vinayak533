@@ -1,6 +1,6 @@
 <picture>
   <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/hero-dark-compact.svg">
-  <img src="assets/svg/hero-dark.svg" width="100%" alt="VINAYAK — AI/ML Engineer at AMnova Technologies, Kochi, India. AI systems that show their work: agents that run real tools, answers that cite or abstain. HackerRank Orchestrate finalist. A butterfly drawn in white and violet dots flaps beside the text.">
+  <img src="assets/svg/hero-dark.svg" width="100%" alt="VINAYAK — AI/ML Engineer at AMnova Technologies, Kochi, India. AI systems that show their work: agents that run real tools, answers that cite or abstain. HackerRank Orchestrate finalist. A butterfly drawn in white and violet dots flies across the banner behind the text, trailing violet stardust.">
 </picture>
 
 <p>

@@ -16,7 +16,7 @@ from theme import (PUBLISHED, THEMES, W, MW, P, MP, arrow, doc, esc, glass_card,
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "assets/svg"
 sys.path.insert(0, str(ROOT / "scripts"))
-from generate_butterfly import butterfly  # noqa: E402  (shared with the standalone assets/butterfly.svg)
+from generate_butterfly import flying, smooth  # noqa: E402  (shared with the standalone assets/butterfly.svg)
 
 PING = ("@keyframes ping{0%{transform:scale(1);opacity:.9}70%,100%{transform:scale(2.6);opacity:0}}"
         ".ping{transform-box:fill-box;transform-origin:center;animation:ping 2.8s ease-out infinite}")
@@ -30,7 +30,7 @@ CYCLE = 10
 BLACK = {"base": "#000000", "base_top": "#000000"}  # hero card: pure black behind the butterfly
 HERO_DESC = ("VINAYAK, AI/ML Engineer at AMnova Technologies, Kochi, India. AI systems that show their work: "
              "agents that run real tools, answers that cite or abstain. Agent loop: route, execute, verify, cite, trace. "
-             "HackerRank Orchestrate finalist. A butterfly drawn in white and violet dots flaps beside the text.")
+             "HackerRank Orchestrate finalist. A butterfly drawn in white and violet dots flies across the banner behind the text, trailing violet stardust.")
 
 
 def name_block(t, x, y, size, ls):
@@ -73,7 +73,10 @@ def loop_tags(t, x, y, max_w, gap=8, rgap=10, h=28):
 def hero_desktop(t):
     w, h = W, 396
     nd, nb = name_block(t, P, 132, 64, 2)
-    bcss, art = butterfly(690, 174, .68)
+    # Figure-eight over the whole card: near and bright on the right, small and dim behind the text.
+    bcss, art = flying(lambda u: (440 + 320 * math.sin(2 * math.pi * u + math.pi / 2) + 14 * math.sin(6 * math.pi * u),
+                                  190 + 105 * math.sin(4 * math.pi * u) + 16 * math.sin(10 * math.pi * u + 1)),
+                       lambda x, y: smooth((x - 260) / 480), w, h, (690, 174, .5))
     tags, tcss, _ = loop_tags(t, P, 286, 520)
     b = [glass_card(dict(t, **BLACK), w, h, "h"), tag_defs(t), "<defs>" + nd + "</defs>",
          f'<g clip-path="url(#hk)">{art}</g>', nb,
@@ -90,9 +93,12 @@ def hero_desktop(t):
 def hero_compact(t):
     w = MW
     nd, nb = name_block(t, MP, 286, 44, 1.5)
-    bcss, art = butterfly(200, 118, .52)
     tags, tcss, ty = loop_tags(t, MP, 506, w - 2 * MP)
     h = ty + 84
+    # Vertical figure-eight: near at the top where the art sits, far as it sinks behind the text.
+    bcss, art = flying(lambda u: (200 + 120 * math.sin(4 * math.pi * u) + 10 * math.sin(6 * math.pi * u),
+                                  h * .42 - h * .32 * math.cos(2 * math.pi * u)),
+                       lambda x, y: smooth((h * .5 - y) / (h * .38)), w, h, (200, 118, .4))
     b = [glass_card(dict(t, **BLACK), w, h, "h"), tag_defs(t), "<defs>" + nd + "</defs>",
          f'<g clip-path="url(#hk)">{art}</g>', nb,
          text(MP, 320, "AI/ML Engineer", 17, t["hues"]["blue"]["ink"], weight=500),
