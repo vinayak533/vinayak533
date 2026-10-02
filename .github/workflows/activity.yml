@@ -1,4 +1,4 @@
-name: Scattered Contribution Snake
+name: Refresh activity panel
 
 on:
   schedule:
@@ -7,38 +7,34 @@ on:
   push:
     branches: [main]
     paths:
-      - "tools/gen_snake.mjs"
-      - ".github/workflows/snake.yml"
+      - "tools/profile/**"
+      - ".github/workflows/activity.yml"
 
 permissions:
   contents: write
 
 concurrency:
-  group: snake
+  group: activity
   cancel-in-progress: true
 
 jobs:
-  snake:
+  activity:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
-      - name: Generate snake
+      - name: Render contribution panel
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_LOGIN: ${{ github.repository_owner }}
-        run: node tools/gen_snake.mjs
+        run: python3 tools/profile/activity.py
 
       - name: Commit if changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/snake-dark.svg assets/snake-light.svg
+          git add assets/svg/activity-dark.svg assets/svg/activity-light.svg
           git diff --staged --quiet && echo "no change" && exit 0
-          git commit -m "chore: refresh contribution snake"
+          git commit -m "chore: refresh activity panel"
           git pull --rebase --autostash origin main
           git push
