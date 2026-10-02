@@ -27,6 +27,7 @@ NAME = "VINAYAK"
 LOOP = [("route", "cyan", "arrow"), ("execute", "blue", "play"), ("verify", "green", "check"),
         ("cite", "yellow", "cite"), ("trace", "violet", "wave")]
 CYCLE = 10
+BLACK = {"base": "#000000", "base_top": "#000000"}  # hero card: pure black behind the butterfly
 HERO_DESC = ("VINAYAK, AI/ML Engineer at AMnova Technologies, Kochi, India. AI systems that show their work: "
              "agents that run real tools, answers that cite or abstain. Agent loop: route, execute, verify, cite, trace. "
              "HackerRank Orchestrate finalist. A butterfly drawn in white and violet dots flaps beside the text.")
@@ -74,7 +75,7 @@ def hero_desktop(t):
     nd, nb = name_block(t, P, 132, 64, 2)
     bcss, art = butterfly(690, 174, .68)
     tags, tcss, _ = loop_tags(t, P, 286, 520)
-    b = [glass_card(t, w, h, "h", bloom="violet", bloom_at=(690, 174, 300)), tag_defs(t), "<defs>" + nd + "</defs>",
+    b = [glass_card(dict(t, **BLACK), w, h, "h"), tag_defs(t), "<defs>" + nd + "</defs>",
          f'<g clip-path="url(#hk)">{art}</g>', nb,
          f'<text x="{P}" y="170" class="s" font-size="19"><tspan fill="{t["hues"]["blue"]["ink"]}" font-weight="500">AI/ML Engineer</tspan>'
          f'<tspan fill="{t["text2"]}"> · AMnova Technologies</tspan></text>',
@@ -92,7 +93,7 @@ def hero_compact(t):
     bcss, art = butterfly(200, 118, .52)
     tags, tcss, ty = loop_tags(t, MP, 506, w - 2 * MP)
     h = ty + 84
-    b = [glass_card(t, w, h, "h", bloom="violet", bloom_at=(200, 118, 220)), tag_defs(t), "<defs>" + nd + "</defs>",
+    b = [glass_card(dict(t, **BLACK), w, h, "h"), tag_defs(t), "<defs>" + nd + "</defs>",
          f'<g clip-path="url(#hk)">{art}</g>', nb,
          text(MP, 320, "AI/ML Engineer", 17, t["hues"]["blue"]["ink"], weight=500),
          text(MP, 344, "AMnova Technologies · Kochi, India", 15, t["text2"]),

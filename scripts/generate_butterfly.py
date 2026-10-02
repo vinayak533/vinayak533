@@ -22,7 +22,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 VB_W, VB_H = 520, 420
 SEED = 533
-BG = "#0D1117"
+BG = "#000000"
 INK = {"white": "#FFFFFF", "soft": "#DCD7EA", "violet": "#A78BFA", "deep": "#7C3AED"}
 
 # Left-wing outlines (body axis at x = 0, y grows downward) as closed Catmull-Rom control points.
@@ -359,7 +359,7 @@ def standalone():
     css, art = butterfly(VB_W / 2, VB_H / 2 + 6, .9)
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{VB_W}" height="{VB_H}" viewBox="0 0 {VB_W} {VB_H}" '
             'role="img" aria-labelledby="title desc"><title id="title">Stippled butterfly</title>'
-            '<desc id="desc">A butterfly drawn in white and violet dots on a dark background, flapping its wings and drifting.</desc>'
+            '<desc id="desc">A butterfly drawn in white and violet dots on a black background, flapping its wings and drifting.</desc>'
             f'<style>{css}@media(prefers-reduced-motion:reduce){{*{{animation:none!important}}.motion{{display:none}}}}</style>'
             f'<rect width="{VB_W}" height="{VB_H}" rx="20" fill="{BG}"/>{art}</svg>\n')
 
