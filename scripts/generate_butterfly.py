@@ -308,7 +308,7 @@ def circles(dots, twinkle, uid, rng):
     return "".join(out)
 
 
-def particles(rng, wings, uid, n=96):
+def particles(rng, wings, uid, n=240):
     """Violet specks shed on each wingbeat: each leaves a wing as it opens, then drifts out,
     shrinks and fades behind the butterfly. Delays are multiples of the flap period, so every
     particle launches when the wings are open, about half of them on each beat."""
