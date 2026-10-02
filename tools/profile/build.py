@@ -7,7 +7,7 @@ The contribution panel lives in activity.py because it needs live data.
 """
 import base64
 import math
-import random
+import sys
 from pathlib import Path
 
 from theme import (PUBLISHED, THEMES, W, MW, P, MP, arrow, doc, esc, glass_card, glow_card, glyph, mix,
@@ -15,85 +15,11 @@ from theme import (PUBLISHED, THEMES, W, MW, P, MP, arrow, doc, esc, glass_card,
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "assets/svg"
+sys.path.insert(0, str(ROOT / "scripts"))
+from generate_butterfly import butterfly  # noqa: E402  (shared with the standalone assets/butterfly.svg)
 
 PING = ("@keyframes ping{0%{transform:scale(1);opacity:.9}70%,100%{transform:scale(2.6);opacity:0}}"
         ".ping{transform-box:fill-box;transform-origin:center;animation:ping 2.8s ease-out infinite}")
-TWINKLE = ("@keyframes tw{0%,100%{opacity:.25;transform:scale(.55)}50%{opacity:1;transform:scale(1.1)}}"
-           ".tw{transform-box:fill-box;transform-origin:center;animation:tw 3.4s ease-in-out infinite}")
-
-
-def status_tag(t, x, y, label, h=28):
-    body, _ = tag(t, x, y, label, "green", "dot", 12.5, h)
-    return body + (f'<circle class="ping motion" cx="{x + h / 2}" cy="{y + h / 2}" r="{h / 2 - 5}" fill="none" '
-                   f'stroke="{t["hues"]["green"]["rim"]}"/>')
-
-
-# ------------------------------------------------------------------ dot-matrix ring
-def _unit(x, y, z):
-    n = math.sqrt(x * x + y * y + z * z)
-    return x / n, y / n, z / n
-
-
-def ring(t, cx, cy, k, cell, seed=7, sparkles=7, dust=56):
-    """A lit torus (the agent loop) rasterised into a plus-glyph dot matrix, like halftone print."""
-    rng = random.Random(seed)
-    R0, r0 = 1.0, .40
-    ct, st = math.cos(math.radians(-62)), math.sin(math.radians(-62))
-    cr, sr = math.cos(math.radians(-14)), math.sin(math.radians(-14))
-    L = _unit(-.45, .62, .64)
-    hv = _unit(L[0], L[1], L[2] + 1)
-    nu, nv = int(2 * math.pi * k * (R0 + r0) / cell * 2.5), int(2 * math.pi * k * r0 / cell * 3)
-    best = {}
-    for a in range(nu):
-        cu, su = math.cos(2 * math.pi * a / nu), math.sin(2 * math.pi * a / nu)
-        for b in range(nv):
-            cv, sv = math.cos(2 * math.pi * b / nv), math.sin(2 * math.pi * b / nv)
-            px, py, pz = (R0 + r0 * cv) * cu, (R0 + r0 * cv) * su, r0 * sv
-            nx, ny, nz = cv * cu, cv * su, sv
-            py, pz = py * ct - pz * st, py * st + pz * ct
-            ny, nz = ny * ct - nz * st, ny * st + nz * ct
-            px, py = px * cr - py * sr, px * sr + py * cr
-            nx, ny = nx * cr - ny * sr, nx * sr + ny * cr
-            key = (round(px * k / cell), round(-py * k / cell))
-            if key not in best or pz > best[key][0]:
-                lam = max(0, nx * L[0] + ny * L[1] + nz * L[2])
-                spec = max(0, nx * hv[0] + ny * hv[1] + nz * hv[2]) ** 24
-                fog = .5 + .5 * (pz + 1.4) / 2.8
-                best[key] = (pz, min(1, (.05 + .8 * lam + .55 * spec) * fog))
-    arm, bar = cell * .34, cell * .17
-    sym = (f'<path id="px" d="M{-bar:.2f} {-arm:.2f}h{2 * bar:.2f}v{arm - bar:.2f}h{arm - bar:.2f}v{2 * bar:.2f}h{bar - arm:.2f}'
-           f'v{arm - bar:.2f}h{-2 * bar:.2f}v{bar - arm:.2f}h{bar - arm:.2f}v{-2 * bar:.2f}h{arm - bar:.2f}z"/>')
-    groups = {k_: [] for k_ in ("dot_lo", "dot_mid", "dot_hi", "dot_warm")}
-    faint, lit = [], []
-    for (i, j), (_, b) in sorted(best.items()):
-        x, y = cx + i * cell, cy + j * cell
-        if b < .15:
-            faint.append(f'<circle cx="{x:g}" cy="{y:g}" r="{cell * .11:.2f}"/>')
-            continue
-        tone = "dot_warm" if b > .4 and rng.random() < .035 else "dot_lo" if b < .42 else "dot_mid" if b < .74 else "dot_hi"
-        groups[tone].append(f'<use href="#px" x="{x:g}" y="{y:g}" opacity="{.28 + .72 * b:.2f}"/>')
-        if b > .55:
-            lit.append((x, y))
-    out = [f'<g fill="{t["dot_lo"]}" opacity=".45">{"".join(faint)}</g>']
-    out += [f'<g fill="{t[tone]}">{"".join(items)}</g>' for tone, items in groups.items() if items]
-    span = k * (R0 + r0)
-    specks, seen = [], set(best)
-    for _ in range(dust * 3):
-        if len(specks) >= dust:
-            break
-        ang, rad = rng.uniform(0, 2 * math.pi), rng.uniform(1.0, 1.45)
-        x = span * rad * math.cos(ang)
-        y = min(span * rad * .62 * math.sin(ang) + abs(rng.gauss(0, span * .18)), span * .92)
-        key = (round(x / cell), round(y / cell))
-        if key in seen:
-            continue
-        seen.add(key)
-        specks.append(f'<use href="#px" x="{cx + key[0] * cell:g}" y="{cy + key[1] * cell:g}" opacity="{rng.uniform(.15, .55):.2f}"/>')
-    out.append(f'<g fill="{t["dot_mid"]}">{"".join(specks)}</g>')
-    for x, y in rng.sample(lit, min(sparkles, len(lit))):
-        out.append(f'<g class="tw" style="animation-delay:{rng.uniform(0, 3.4):.2f}s">'
-                   + glyph("star", x, y, t["dot_hi"], cell * .21) + "</g>")
-    return f"<defs>{sym}</defs>", "".join(out)
 
 
 # ------------------------------------------------------------------ hero
@@ -103,7 +29,7 @@ LOOP = [("route", "cyan", "arrow"), ("execute", "blue", "play"), ("verify", "gre
 CYCLE = 10
 HERO_DESC = ("VINAYAK, AI/ML Engineer at AMnova Technologies, Kochi, India. AI systems that show their work: "
              "agents that run real tools, answers that cite or abstain. Agent loop: route, execute, verify, cite, trace. "
-             "HackerRank Orchestrate finalist. Open to AI/ML and LLM roles.")
+             "HackerRank Orchestrate finalist. A butterfly drawn in white and violet dots flaps beside the text.")
 
 
 def name_block(t, x, y, size, ls):
@@ -146,11 +72,10 @@ def loop_tags(t, x, y, max_w, gap=8, rgap=10, h=28):
 def hero_desktop(t):
     w, h = W, 396
     nd, nb = name_block(t, P, 132, 64, 2)
-    rd, rb = ring(t, 712, 172, 96, 8)
+    bcss, art = butterfly(690, 174, .68)
     tags, tcss, _ = loop_tags(t, P, 286, 520)
-    b = [glass_card(t, w, h, "h", bloom="violet", bloom_at=(712, 172, 300)), tag_defs(t), "<defs>" + nd + "</defs>", rd,
-         f'<g clip-path="url(#hk)">{rb}</g>',
-         status_tag(t, P, 34, "Open to AI/ML & LLM roles"), nb,
+    b = [glass_card(t, w, h, "h", bloom="violet", bloom_at=(690, 174, 300)), tag_defs(t), "<defs>" + nd + "</defs>",
+         f'<g clip-path="url(#hk)">{art}</g>', nb,
          f'<text x="{P}" y="170" class="s" font-size="19"><tspan fill="{t["hues"]["blue"]["ink"]}" font-weight="500">AI/ML Engineer</tspan>'
          f'<tspan fill="{t["text2"]}"> · AMnova Technologies</tspan></text>',
          statement(t, P, 230, 29, "AI systems that ", "show", " their work."),
@@ -158,18 +83,17 @@ def hero_desktop(t):
          tags, hline(t, P, 340, w - P),
          text(P, 370, "KOCHI, INDIA", 11.5, t["text3"], True, ls=1.2),
          text(w - P, 370, "HACKERRANK ORCHESTRATE FINALIST", 11.5, t["text3"], True, anchor="end", ls=1.2)]
-    return doc(w, h, "VINAYAK — AI/ML Engineer", HERO_DESC, "".join(b), PING + TWINKLE + tcss)
+    return doc(w, h, "VINAYAK — AI/ML Engineer", HERO_DESC, "".join(b), bcss + tcss)
 
 
 def hero_compact(t):
     w = MW
     nd, nb = name_block(t, MP, 286, 44, 1.5)
-    rd, rb = ring(t, 200, 104, 66, 6, sparkles=5, dust=40)
+    bcss, art = butterfly(200, 118, .52)
     tags, tcss, ty = loop_tags(t, MP, 506, w - 2 * MP)
     h = ty + 84
-    b = [glass_card(t, w, h, "h", bloom="violet", bloom_at=(200, 104, 220)), tag_defs(t), "<defs>" + nd + "</defs>", rd,
-         f'<g clip-path="url(#hk)">{rb}</g>',
-         status_tag(t, MP, 206, "Open to AI/ML & LLM roles"), nb,
+    b = [glass_card(t, w, h, "h", bloom="violet", bloom_at=(200, 118, 220)), tag_defs(t), "<defs>" + nd + "</defs>",
+         f'<g clip-path="url(#hk)">{art}</g>', nb,
          text(MP, 320, "AI/ML Engineer", 17, t["hues"]["blue"]["ink"], weight=500),
          text(MP, 344, "AMnova Technologies · Kochi, India", 15, t["text2"]),
          statement(t, MP, 398, 31, "AI systems that"),
@@ -178,7 +102,7 @@ def hero_compact(t):
          text(MP, 490, "Answers that cite or abstain.", 15, t["text2"]),
          tags, hline(t, MP, ty + 26, w - MP),
          text(MP, ty + 54, "HACKERRANK ORCHESTRATE FINALIST", 11, t["text3"], True, ls=1)]
-    return doc(w, h, "VINAYAK — AI/ML Engineer", HERO_DESC, "".join(b), PING + TWINKLE + tcss)
+    return doc(w, h, "VINAYAK — AI/ML Engineer", HERO_DESC, "".join(b), bcss + tcss)
 
 
 # ------------------------------------------------------------------ expertise: three lit cards + principles

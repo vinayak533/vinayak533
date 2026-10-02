@@ -7,9 +7,9 @@ The README is the profile. Every panel is a generated SVG; the only scheduled da
 - **Surfaces** — dark glass cards lit from below: a tinted body, a bloom rising from the bottom edge, and a rim that brightens toward the light. The profile publishes this dark art in both GitHub colour modes (`PUBLISHED` in `theme.py`; a light palette is kept there but not built). Anything that sits directly on the page — link pills, the principles strip — has an opaque dark base so it reads on white too. 20 px card radius, fully rounded pills, 36 px desktop / 24 px compact padding.
 - **Colour carries meaning** — blue = agent systems (loom.ai), green = grounded generation (lazyhire), orange = applied ML (InForge-AI). The expertise trio and the project cards share this mapping. Other hues appear only inside pills (agent-loop steps, stack categories, link buttons). Green dots mean availability.
 - **Pills** — tinted fill, gradient border, filled icon disc.
-- **Dot matrix** — the hero ring (the agent loop, a lit torus rasterised into plus glyphs with drifting specks and sparkles) and the activity panel (one column per week; lit cells proportional to that week's real total).
+- **Dot matrix** — the hero butterfly (thousands of blue-noise stippled dots, dense and white at the body, sparse with violet margins at the wing edges) and the activity panel (one column per week; lit cells proportional to that week's real total).
 - **Type** — GitHub's system sans and mono stacks, with one italic serif accent per headline (Georgia stack). No embedded fonts.
-- **Motion** — slow and optional: name sheen, sparkle twinkle, agent-loop steps lighting in sequence, the loom.ai request pulse and event flow, availability pings. CSS honours `prefers-reduced-motion` and motion-only layers are hidden. Every panel is complete on its first frame.
+- **Motion** — slow and optional: name sheen, butterfly wing flap, float, dot twinkle and drifting dust, agent-loop steps lighting in sequence, the loom.ai request pulse and event flow, availability pings. CSS honours `prefers-reduced-motion` and motion-only layers are hidden. Every panel is complete on its first frame.
 - **Responsive** — each panel has a 880 px desktop and a 400 px compact variant, chosen by `<picture>` media queries: compact below 640 px and between 768–959 px (where GitHub's profile sidebar narrows the README column). Art renders between 0.65× and 1.45× at every width.
 
 ## Files
@@ -20,6 +20,7 @@ The README is the profile. Every panel is a generated SVG; the only scheduled da
 | `tools/profile/theme.py` | Tokens, hue palette, glass/glow surfaces, glyphs, pills |
 | `tools/profile/build.py` | Hero, expertise, project cards, framed screenshot, stack, contact, link pills |
 | `tools/profile/activity.py` | Validated contribution data and the dot-matrix activity panel |
+| `scripts/generate_butterfly.py` | Stippled, animated butterfly: writes `assets/butterfly.svg` and supplies the same art to the hero (README images can't load other files, so it is inlined) |
 | `assets/svg/` | Generated: desktop + compact variants, link pills and the framed screenshot (dark) |
 | `assets/screens/` | Real project screenshots, unchanged |
 | `.github/workflows/activity.yml` | Daily refresh of the activity variants |
@@ -29,9 +30,10 @@ The README is the profile. Every panel is a generated SVG; the only scheduled da
 ```bash
 python tools/profile/build.py
 python tools/profile/activity.py
+python scripts/generate_butterfly.py   # standalone assets/butterfly.svg; build.py already inlines it in the hero
 ```
 
-Both use only the standard library. `build.py` needs no network; the ring artwork is seeded, so rebuilds are byte-stable. `activity.py` uses `GITHUB_TOKEN` when present, otherwise GitHub's public contribution calendar; `GH_LOGIN` defaults to `vinayak533`. It checks date continuity, range, levels and totals before writing, and keeps the existing panel if anything fails. The workflow needs `contents: write` to commit refreshed panels; neither script pushes.
+Both use only the standard library. `build.py` needs no network; the butterfly artwork is seeded, so rebuilds are byte-stable. `activity.py` uses `GITHUB_TOKEN` when present, otherwise GitHub's public contribution calendar; `GH_LOGIN` defaults to `vinayak533`. It checks date continuity, range, levels and totals before writing, and keeps the existing panel if anything fails. The workflow needs `contents: write` to commit refreshed panels; neither script pushes.
 
 `screen-loom-*.svg` embeds `assets/screens/loom-agent-trace.png` (base64) inside a window frame, so it is ~390 KB. Rebuild after replacing that screenshot.
 
