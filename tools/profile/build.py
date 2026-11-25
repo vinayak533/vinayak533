@@ -3,7 +3,7 @@
 
     python tools/profile/build.py
 
-Project films live in scenes.py, the paper and portfolio cards in pages.py. The contribution panel lives
+Project films live in scenes.py, skills in skills.py, the paper and portfolio cards in pages.py. The contribution panel lives
 in activity.py because it needs live data.
 """
 import math
@@ -12,7 +12,8 @@ from pathlib import Path
 
 import pages
 import scenes
-from theme import MATRIX_CSS, V, W, MW, P, MP, R, arrow, cover, doc, esc, glyph, hline, matrix, surface, text, tw
+import skills
+from theme import MATRIX_CSS, V, W, MW, P, MP, R, arrow, cover, doc, esc, glyph, matrix, surface, text, tw
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "assets/svg"
@@ -27,7 +28,7 @@ NAME = "VINAYAK"
 LOOP = ["route", "execute", "verify", "cite", "trace"]
 CYCLE = 10
 INK, SUB, DIM = "#F4F5F6", "#B4B8C0", "#8D929B"
-HERO_DESC = ("VINAYAK, AI/ML Engineer at AMnova Technologies, Kochi, India. AI systems that show their work: "
+HERO_DESC = ("VINAYAK, AI/ML Engineer, Kochi, India. AI systems that show their work: "
              "agents that run real tools, answers that cite or abstain. Agent loop: route, execute, verify, cite, trace. "
              "HackerRank Orchestrate finalist. A butterfly drawn in white and violet dots flies across the banner behind the text, trailing violet stardust.")
 
@@ -74,7 +75,7 @@ def loop_chips(x, y, max_w, gap=8, h=30):
     return "".join(out), css, cy + h
 
 
-ROLL = ["show their work.", "run real tools.", "cite or abstain.", "fail over, not out."]
+ROLL = ["show their work", "run real tools", "cite or abstain", "fail over, not out"]
 
 
 def roller(x, y, size, uid="rl"):
@@ -102,8 +103,7 @@ def hero_desktop():
     chips, tcss, _ = loop_chips(P, 356, 520)
     roll, rcss = roller(P, 286, 52)
     b = [hero_card(w, h), f'<g clip-path="url(#hk)">{art}</g>', name_block(P, 82, 38, 3),
-         f'<text x="{P}" y="116" class="s" font-size="18"><tspan fill="{INK}" font-weight="500">AI/ML Engineer</tspan>'
-         f'<tspan fill="{SUB}"> at AMnova Technologies</tspan></text>',
+         f'<text x="{P}" y="116" class="s" font-size="18"><tspan fill="{INK}" font-weight="500">AI/ML Engineer</tspan></text>',
          text(P, 222, "AI systems that", 56, INK, weight=600, ls=-1.8), roll,
          chips, '<path d="M36 414H844" stroke="#FFF" stroke-opacity=".12"/>',
          text(P, 444, "Kochi, India", 14, DIM), text(w - P, 444, "HackerRank Orchestrate finalist", 14, DIM, anchor="end")]
@@ -120,7 +120,7 @@ def hero_compact():
                        lambda x, y: smooth((h * .5 - y) / (h * .38)), w, h, (200, 118, .4))
     roll, rcss = roller(MP, 428, 37)
     b = [hero_card(w, h), f'<g clip-path="url(#hk)">{art}</g>', name_block(MP, 264, 32, 2.5),
-         text(MP, 296, "AI/ML Engineer", 17, INK, weight=500), text(MP, 320, "AMnova Technologies, Kochi, India", 15.5, SUB),
+         text(MP, 296, "AI/ML Engineer", 17, INK, weight=500), text(MP, 320, "Kochi, India", 15.5, SUB),
          text(MP, 384, "AI systems that", 41, INK, weight=600, ls=-1.2), roll,
          chips, f'<path d="M{MP} {ty + 24}H{w - MP}" stroke="#FFF" stroke-opacity=".12"/>',
          text(MP, ty + 53, "HackerRank Orchestrate finalist", 14.5, DIM)]
@@ -217,62 +217,6 @@ def expertise(m=False):
     return doc(w, h, "Engineering expertise", desc, "".join(b), MATRIX_CSS)
 
 
-# ------------------------------------------------------------------ stack
-STACK = [
-    ("AI / ML", ["pandas", "NumPy", "scikit-learn", "XGBoost"]),
-    ("LLMs and agents", ["LangGraph", "CrewAI", "LlamaIndex", "Vanna 2.0", "OpenAI SDK"]),
-    ("Model APIs", ["Groq", "Gemini", "OpenRouter"]),
-    ("Backend", ["Python", "FastAPI", "WebSockets", "Pydantic"]),
-    ("Frontend", ["TypeScript", "Next.js", "React", "Tailwind CSS"]),
-    ("Data", ["PostgreSQL", "Supabase", "pgvector", "SQLite", "Drizzle"]),
-    ("Cloud and delivery", ["E2B", "Docker", "GitHub Actions", "Playwright", "Vercel", "Render"]),
-]
-
-
-def wrap_tokens(items, width, sep_w):
-    rows, row, used = [], [], 0
-    for item, wd in items:
-        need = wd if not row else used + sep_w + wd
-        if row and need > width:
-            rows.append(row)
-            row, need = [], wd
-        row.append((item, wd))
-        used = need
-    return rows + [row] if row else rows
-
-
-def stack(m=False):
-    b = []
-    if m:
-        w, y = MW, 8
-        for i, (group, items) in enumerate(STACK):
-            if i:
-                b.append(hline(MP, y + 14, w - MP))
-            y += 44
-            b.append(text(MP, y, group, 14.5, V["text3"]))
-            for row in wrap_tokens([(s, tw(s, 18, weight=600)) for s in items], w - 2 * MP, 20):
-                y += 30
-                x = MP
-                for s, wd in row:
-                    b.append(text(x, y, s, 18, V["text"], weight=500))
-                    x += wd + 20
-        h = y + 32
-    else:
-        w, rh, top = W, 58, 14
-        h = top * 2 + rh * len(STACK)
-        for i, (group, items) in enumerate(STACK):
-            y = top + i * rh
-            if i:
-                b.append(hline(P, y, w - P))
-            b.append(text(P, y + rh / 2 + 5, group, 14.5, V["text3"]))
-            x = 210
-            for s in items:
-                b.append(text(x, y + rh / 2 + 6.5, s, 18, V["text"], weight=500))
-                x += tw(s, 18, weight=600) + 20
-    desc = "; ".join(f"{g}: {', '.join(items)}" for g, items in STACK)
-    return doc(w, h, "Tech stack", desc, surface(w, h) + "".join(b))
-
-
 # ------------------------------------------------------------------ contact
 EMAIL = "vinayakkvjob@gmail.com"
 
@@ -330,7 +274,7 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     responsive = {"hero": lambda m: hero_compact() if m else hero_desktop(), "expertise": expertise,
                   "proof": proof, "card-loom": scenes.loom, "card-lazyhire": scenes.lazyhire, "card-inforge": scenes.inforge,
-                  "card-paper": pages.paper, "card-portfolio": pages.portfolio, "stack": stack, "contact": contact}
+                  "card-paper": pages.paper, "card-portfolio": pages.portfolio, "stack": skills.skills, "contact": contact}
     out = {f'{name}{"-compact" if m else ""}': render(m) for name, render in responsive.items() for m in (False, True)}
     out.update({f"link-{key}": link_button(key) for key in LINKS})
     for name, svg in out.items():

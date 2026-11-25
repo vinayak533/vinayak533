@@ -17,11 +17,13 @@ The README is the profile. Every panel is a generated SVG; the only scheduled da
 
 | Path | Purpose |
 | --- | --- |
-| `README.md` | Hero → introduction → proof → selected work → research → portfolio → more projects → expertise → stack → activity → contact |
+| `README.md` | Hero → introduction → proof → selected work → research → portfolio → expertise → technical skills → activity → contact |
 | `tools/profile/theme.py` | Tokens, surfaces, glyphs, dot-matrix icons |
 | `tools/profile/scenes.py` | Film clock and the three project films |
 | `tools/profile/pages.py` | Research paper and portfolio cards |
-| `tools/profile/build.py` | Hero, proof band, expertise, stack, contact, link buttons; writes every panel |
+| `tools/profile/skills.py` | Technical skills panel and drawn symbols |
+| `assets/icons/` | Original technology logos and their sources |
+| `tools/profile/build.py` | Hero, proof band, expertise, contact, link buttons; writes every panel |
 | `tools/profile/activity.py` | Validated contribution data and the dot-matrix activity panel |
 | `scripts/generate_butterfly.py` | Stippled, animated butterfly: writes `assets/butterfly.svg` and supplies the same art to the hero (README images can't load other files, so it is inlined) |
 | `assets/svg/` | Generated: desktop + compact variants and link buttons. The `*-dark*.svg` files belong to the previous design and are no longer used or rebuilt |
@@ -46,7 +48,7 @@ The portfolio cards embed `assets/screens/web/neo.webp` (base64, ~38 KB), a tran
 - The proof band: 44% is (8.9 − 5.0) / 8.9 from loom.ai's `docs/performance.md`; 10 agents from its README; 18/20 from NL2SQL's own benchmark; the paper is Zenodo DOI 10.5281/zenodo.20253956.
 - The principles row (deterministic core, cite or abstain, fail over not out, documented limits) restates the original profile's principles section.
 - Screenshot captions keep their scripted / seeded / fixture qualifications.
-- The stack lists only technologies declared in the featured projects' dependency files.
+- The technical skills list is the owner's own; logos are original and credited in `assets/icons/SOURCES.md`.
 - The activity panel is drawn only from real GitHub data — never decorative cells.
 
 ## Review after edits

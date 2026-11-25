@@ -1,7 +1,7 @@
 <p>
 <picture>
   <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/hero-compact.svg">
-  <img src="assets/svg/hero.svg" width="100%" alt="VINAYAK — AI/ML Engineer at AMnova Technologies, Kochi, India. AI systems that show their work: agents that run real tools, answers that cite or abstain. HackerRank Orchestrate finalist. A butterfly drawn in white and violet dots flies across the banner behind the text, trailing violet stardust.">
+  <img src="assets/svg/hero.svg" width="100%" alt="VINAYAK — AI/ML Engineer, Kochi, India. AI systems that show their work: agents that run real tools, answers that cite or abstain. HackerRank Orchestrate finalist. A butterfly drawn in white and violet dots flies across the banner behind the text, trailing violet stardust.">
 </picture>
 </p>
 
@@ -127,18 +127,6 @@ I build agent systems, grounded LLM applications and ML pipelines that expose ho
 </a>
 </p>
 
-### More projects
-
-| Project | What it does |
-| :-- | :-- |
-| [**NL2SQL-AI-Assistant**](https://github.com/vinayak533/NL2SQL-AI-Assistant) | Validated SQL over a clinic database; 18/20 on its own benchmark<br><sub>Vanna 2.0, Gemini, FastAPI</sub> |
-| [**llm-battle-arena**](https://github.com/vinayak533/llm-battle-arena) | Two models answer, a third judges with structured verdicts<br><sub>LlamaIndex, Groq</sub> |
-| [**InsightGenie**](https://github.com/vinayak533/InsightGenie-Data-Analyzer) | CSV health checks, charts and rule-based ML recommendations<br><sub>FastAPI, React, pandas</sub> |
-| [**ARIA churn platform**](https://github.com/vinayak533/bank-churn-intelligence-platform) | XGBoost churn estimates, explained by an LLM and read aloud<br><sub>FastAPI, Groq, ElevenLabs</sub> |
-| [**PredictLab**](https://github.com/vinayak533/PredictLab-) | Three health-risk classifiers behind one API<br><sub>scikit-learn, FastAPI, Docker</sub> |
-| [**Medical Voice & Vision**](https://github.com/vinayak533/AI-Medical-Voice-Vision-Assistant) | Spoken question plus image in, spoken answer out<br><sub>Groq, Gradio, gTTS</sub> |
-| [**Multi-agent stock analysis**](https://github.com/vinayak533/AI-Multi-Agent-Stock-Analysis-Trading-System) | Two agents turn a price snapshot into a Buy/Sell/Hold rationale<br><sub>CrewAI, yfinance, Streamlit</sub> |
-
 ### Expertise
 
 <picture>
@@ -146,14 +134,12 @@ I build agent systems, grounded LLM applications and ML pipelines that expose ho
   <img src="assets/svg/expertise.svg" width="100%" alt="Agent systems (loom.ai): tool execution in a real Linux sandbox, model routing with provider fallback. Grounded generation (loom.ai, lazyhire): answers that cite sources or abstain; CV drafts checked for invented claims. Applied ML (InForge-AI, InsightGenie, NL2SQL): cleaning, EDA and model benchmarking, with local fallbacks when LLMs fail. Product engineering (loom.ai, lazyhire, InForge-AI): WebSocket backends and Next.js products, hardened with CSP, CSRF and E2E tests.">
 </picture>
 
-### Tech stack
+### Technical Skills
 
 <picture>
   <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/stack-compact.svg">
-  <img src="assets/svg/stack.svg" width="100%" alt="AI / ML: pandas, NumPy, scikit-learn, XGBoost. LLMs and agents: LangGraph, CrewAI, LlamaIndex, Vanna 2.0, OpenAI SDK. Model APIs: Groq, Gemini, OpenRouter. Backend: Python, FastAPI, WebSockets, Pydantic. Frontend: TypeScript, Next.js, React, Tailwind CSS. Data: PostgreSQL, Supabase, pgvector, SQLite, Drizzle. Cloud and delivery: E2B, Docker, GitHub Actions, Playwright, Vercel, Render.">
+  <img src="assets/svg/stack.svg" width="100%" alt="Languages: Python, TypeScript, SQL, C++. AI &amp; Agents: LangGraph, LangChain, Multi-Agent Systems, RAG, Tool Calling, LLM Routing, Guardrails. ML &amp; Retrieval: PyTorch, Scikit-learn, XGBoost, pgvector, Hybrid Retrieval, MLflow. Backend: FastAPI, WebSockets, Next.js, E2B Sandboxes. Cloud &amp; Data: PostgreSQL, Supabase, SQLite, Docker, AWS, GitHub Actions.">
 </picture>
-
-<sub>Only technologies declared in the dependency files of the projects above.</sub>
 
 ### GitHub activity
 
