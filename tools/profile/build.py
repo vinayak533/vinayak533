@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
-"""Build every static profile panel: dark/light x desktop/compact. Standard library only.
+"""Build every static profile panel, desktop and compact. Standard library only.
 
     python tools/profile/build.py
 
-The contribution panel lives in activity.py because it needs live data.
+Project films live in scenes.py, the paper and portfolio cards in pages.py. The contribution panel lives
+in activity.py because it needs live data.
 """
-import base64
 import math
 import sys
 from pathlib import Path
 
-from theme import (PUBLISHED, THEMES, W, MW, P, MP, arrow, doc, esc, glass_card, glow_card, glyph, mix,
-                   hline, tag, tag_defs, tag_width, text, tw, vline)
+import pages
+import scenes
+from theme import MATRIX_CSS, V, W, MW, P, MP, R, arrow, cover, doc, esc, glyph, hline, matrix, surface, text, tw
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "assets/svg"
@@ -21,273 +22,211 @@ from generate_butterfly import flying, smooth  # noqa: E402  (shared with the st
 PING = ("@keyframes ping{0%{transform:scale(1);opacity:.9}70%,100%{transform:scale(2.6);opacity:0}}"
         ".ping{transform-box:fill-box;transform-origin:center;animation:ping 2.8s ease-out infinite}")
 
-
-# ------------------------------------------------------------------ hero
+# ------------------------------------------------------------------ hero: pure black in both themes, behind the butterfly
 NAME = "VINAYAK"
-LOOP = [("route", "cyan", "arrow"), ("execute", "blue", "play"), ("verify", "green", "check"),
-        ("cite", "yellow", "cite"), ("trace", "violet", "wave")]
+LOOP = ["route", "execute", "verify", "cite", "trace"]
 CYCLE = 10
-BLACK = {"base": "#000000", "base_top": "#000000"}  # hero card: pure black behind the butterfly
+INK, SUB, DIM = "#F4F5F6", "#B4B8C0", "#8D929B"
 HERO_DESC = ("VINAYAK, AI/ML Engineer at AMnova Technologies, Kochi, India. AI systems that show their work: "
              "agents that run real tools, answers that cite or abstain. Agent loop: route, execute, verify, cite, trace. "
              "HackerRank Orchestrate finalist. A butterfly drawn in white and violet dots flies across the banner behind the text, trailing violet stardust.")
 
 
-def name_block(t, x, y, size, ls):
+def hero_card(w, h):
+    return (f'<defs><clipPath id="hk"><rect x="1" y="1" width="{w - 2}" height="{h - 2}" rx="{R - 1}"/></clipPath></defs>'
+            f'<rect x=".5" y=".5" width="{w - 1}" height="{h - 1}" rx="{R}" fill="#000" stroke="#FFF" stroke-opacity=".14"/>')
+
+
+def name_block(x, y, size, ls):
     span = tw(NAME, size, weight=600) + 40
     defs = (f'<linearGradient id="ng" x1="0" y1="{y - size * .72:.0f}" x2="0" y2="{y}" gradientUnits="userSpaceOnUse">'
-            f'<stop stop-color="{t["text"]}"/><stop offset="1" stop-color="{t["name_lo"]}"/></linearGradient>'
+            '<stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#B9BDC8"/></linearGradient>'
             f'<linearGradient id="sheen" x1="0" y1="0" x2="{size * 2.6:.0f}" y2="0" gradientUnits="userSpaceOnUse">'
-            f'<stop stop-color="{t["sheen"]}" stop-opacity="0"/><stop offset=".5" stop-color="{t["sheen"]}" stop-opacity=".85"/>'
-            f'<stop offset="1" stop-color="{t["sheen"]}" stop-opacity="0"/>'
+            '<stop stop-color="#B9A6FB" stop-opacity="0"/><stop offset=".5" stop-color="#B9A6FB" stop-opacity=".85"/>'
+            '<stop offset="1" stop-color="#B9A6FB" stop-opacity="0"/>'
             f'<animateTransform attributeName="gradientTransform" type="translate" dur="12s" repeatCount="indefinite" '
             f'values="{x - size * 3:.0f} 0;{x - size * 3:.0f} 0;{x + span:.0f} 0;{x + span:.0f} 0" keyTimes="0;.6;.8;1"/>'
             '</linearGradient>')
     body = (text(x, y, NAME, size, "url(#ng)", weight=600, ls=ls)
             + text(x, y, NAME, size, "url(#sheen)", weight=600, ls=ls, cls="motion"))
-    return defs, body
+    return f"<defs>{defs}</defs>{body}"
 
 
-def statement(t, x, y, size, before, accent="", after=""):
+def statement(x, y, size, before, accent="", after="", fill=INK):
     """Sans headline with one italic serif accent, like editorial poster type."""
     serif = (f'<tspan class="f" font-style="italic" font-weight="400" letter-spacing="0">{esc(accent)}</tspan>' if accent else "")
-    return (f'<text x="{x}" y="{y}" class="s" font-size="{size}" fill="{t["text"]}" font-weight="500" letter-spacing="-.5">'
+    return (f'<text x="{x}" y="{y}" class="s" font-size="{size}" fill="{fill}" font-weight="500" letter-spacing="-.5">'
             f'{esc(before)}{serif}{esc(after)}</text>')
 
 
-def loop_tags(t, x, y, max_w, gap=8, rgap=10, h=28):
+def loop_chips(x, y, max_w, gap=8, h=30):
+    """The agent loop as neutral chips; a soft light steps through them in order."""
     out, cx, cy = [], x, y
-    for i, (label, hue, ic) in enumerate(LOOP):
-        w = tag_width(label, 12.5, h)
+    for i, label in enumerate(LOOP):
+        w = tw(label, 13, weight=500) + 26
         if cx > x and cx + w > x + max_w:
-            cx, cy = x, cy + h + rgap
-        body, _ = tag(t, cx, cy, label, hue, ic, 12.5, h)
-        out.append(f'<g class="lp{i}">{body}</g>')
+            cx, cy = x, cy + h + gap
+        out.append(f'<g><rect class="lp{i}" x="{cx:.1f}" y="{cy}" width="{w:.1f}" height="{h}" rx="{h / 2}" fill="#FFF" fill-opacity=".09" '
+                   f'stroke="#FFF" stroke-opacity=".16"/>{text(cx + w / 2, cy + h / 2 + 4.6, label, 13, INK, weight=500, anchor="middle")}</g>')
         cx += w + gap
-    f0 = t["tag_fill"]
-    css = f"@keyframes lp{{0%,24%,100%{{fill-opacity:{f0}}}6%,12%{{fill-opacity:{min(f0 * 3, .5):.2f}}}}}"
-    css += "".join(f".lp{i} rect{{animation:lp {CYCLE}s ease-in-out {i * CYCLE / 5:.1f}s infinite}}" for i in range(5))
+    css = "@keyframes lp{0%,24%,100%{fill:#FFF;fill-opacity:.09;stroke-opacity:.16}6%,12%{fill:#A78BFA;fill-opacity:.42;stroke-opacity:.5}}"
+    css += "".join(f".lp{i}{{animation:lp {CYCLE}s ease-in-out {i * CYCLE / 5:.1f}s infinite}}" for i in range(5))
     return "".join(out), css, cy + h
 
 
-def hero_desktop(t):
-    w, h = W, 396
-    nd, nb = name_block(t, P, 132, 64, 2)
+ROLL = ["show their work.", "run real tools.", "cite or abstain.", "fail over, not out."]
+
+
+def roller(x, y, size, uid="rl"):
+    """Second headline line: four true endings turn over like a departure board, then rest on the first."""
+    n, step, hold = len(ROLL), size * 1.5, 100 / len(ROLL)
+    frames = ""
+    for i in range(n + 1):
+        a, b = i * hold, (i + .82) * hold
+        frames += f"{a:.2f}%{{transform:translateY({-i * step:.1f}px)}}" + (f"{b:.2f}%{{transform:translateY({-i * step:.1f}px)}}" if i < n else "")
+    lines = "".join(f'<text x="{x}" y="{y + i * step:.1f}" class="f" font-style="italic" font-size="{size}" fill="{"#C9BBFF" if i % n == 0 else INK}">{esc(t)}</text>'
+                    for i, t in enumerate(ROLL + ROLL[:1]))
+    css = f"@keyframes {uid}{{{frames}}}.{uid}{{animation:{uid} 14s cubic-bezier(.7,0,.2,1) infinite}}"
+    return (f'<defs><clipPath id="{uid}c"><rect x="{x - 8}" y="{y - size * 1.02:.1f}" width="620" height="{size * 1.38:.1f}"/></clipPath>'
+            f'<linearGradient id="{uid}g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#000"/><stop offset=".1" stop-color="#FFF"/><stop offset=".9" stop-color="#FFF"/><stop offset="1" stop-color="#000"/></linearGradient>'
+            f'<mask id="{uid}m" maskUnits="userSpaceOnUse" x="{x - 8}" y="{y - size * .88:.1f}" width="620" height="{size * 1.3:.1f}"><rect x="{x - 8}" y="{y - size * .88:.1f}" width="620" height="{size * 1.3:.1f}" fill="url(#{uid}g)"/></mask></defs>'
+            f'<g mask="url(#{uid}m)"><g class="{uid}">{lines}</g></g>'), css
+
+
+def hero_desktop():
+    w, h = W, 470
     # Figure-eight over the whole card: near and bright on the right, small and dim behind the text.
     bcss, art = flying(lambda u: (440 + 320 * math.sin(2 * math.pi * u + math.pi / 2) + 14 * math.sin(6 * math.pi * u),
-                                  190 + 105 * math.sin(4 * math.pi * u) + 16 * math.sin(10 * math.pi * u + 1)),
-                       lambda x, y: smooth((x - 260) / 480), w, h, (690, 174, .5))
-    tags, tcss, _ = loop_tags(t, P, 286, 520)
-    b = [glass_card(dict(t, **BLACK), w, h, "h"), tag_defs(t), "<defs>" + nd + "</defs>",
-         f'<g clip-path="url(#hk)">{art}</g>', nb,
-         f'<text x="{P}" y="170" class="s" font-size="19"><tspan fill="{t["hues"]["blue"]["ink"]}" font-weight="500">AI/ML Engineer</tspan>'
-         f'<tspan fill="{t["text2"]}"> · AMnova Technologies</tspan></text>',
-         statement(t, P, 230, 29, "AI systems that ", "show", " their work."),
-         text(P, 262, "Agents that run real tools. Answers that cite or abstain.", 15.5, t["text2"]),
-         tags, hline(t, P, 340, w - P),
-         text(P, 370, "KOCHI, INDIA", 11.5, t["text3"], True, ls=1.2),
-         text(w - P, 370, "HACKERRANK ORCHESTRATE FINALIST", 11.5, t["text3"], True, anchor="end", ls=1.2)]
-    return doc(w, h, "VINAYAK — AI/ML Engineer", HERO_DESC, "".join(b), bcss + tcss)
+                                  220 + 125 * math.sin(4 * math.pi * u) + 16 * math.sin(10 * math.pi * u + 1)),
+                       lambda x, y: smooth((x - 260) / 480), w, h, (690, 200, .52))
+    chips, tcss, _ = loop_chips(P, 356, 520)
+    roll, rcss = roller(P, 286, 52)
+    b = [hero_card(w, h), f'<g clip-path="url(#hk)">{art}</g>', name_block(P, 82, 38, 3),
+         f'<text x="{P}" y="116" class="s" font-size="18"><tspan fill="{INK}" font-weight="500">AI/ML Engineer</tspan>'
+         f'<tspan fill="{SUB}"> at AMnova Technologies</tspan></text>',
+         text(P, 222, "AI systems that", 56, INK, weight=600, ls=-1.8), roll,
+         chips, '<path d="M36 414H844" stroke="#FFF" stroke-opacity=".12"/>',
+         text(P, 444, "Kochi, India", 14, DIM), text(w - P, 444, "HackerRank Orchestrate finalist", 14, DIM, anchor="end")]
+    return doc(w, h, "VINAYAK — AI/ML Engineer", HERO_DESC, "".join(b), bcss + tcss + rcss)
 
 
-def hero_compact(t):
+def hero_compact():
     w = MW
-    nd, nb = name_block(t, MP, 286, 44, 1.5)
-    tags, tcss, ty = loop_tags(t, MP, 506, w - 2 * MP)
-    h = ty + 84
+    chips, tcss, ty = loop_chips(MP, 478, w - 2 * MP)
+    h = ty + 82
     # Vertical figure-eight: near at the top where the art sits, far as it sinks behind the text.
     bcss, art = flying(lambda u: (200 + 120 * math.sin(4 * math.pi * u) + 10 * math.sin(6 * math.pi * u),
                                   h * .42 - h * .32 * math.cos(2 * math.pi * u)),
                        lambda x, y: smooth((h * .5 - y) / (h * .38)), w, h, (200, 118, .4))
-    b = [glass_card(dict(t, **BLACK), w, h, "h"), tag_defs(t), "<defs>" + nd + "</defs>",
-         f'<g clip-path="url(#hk)">{art}</g>', nb,
-         text(MP, 320, "AI/ML Engineer", 17, t["hues"]["blue"]["ink"], weight=500),
-         text(MP, 344, "AMnova Technologies · Kochi, India", 15, t["text2"]),
-         statement(t, MP, 398, 31, "AI systems that"),
-         statement(t, MP, 434, 31, "", "show", " their work."),
-         text(MP, 468, "Agents that run real tools.", 15, t["text2"]),
-         text(MP, 490, "Answers that cite or abstain.", 15, t["text2"]),
-         tags, hline(t, MP, ty + 26, w - MP),
-         text(MP, ty + 54, "HACKERRANK ORCHESTRATE FINALIST", 11, t["text3"], True, ls=1)]
-    return doc(w, h, "VINAYAK — AI/ML Engineer", HERO_DESC, "".join(b), bcss + tcss)
+    roll, rcss = roller(MP, 428, 37)
+    b = [hero_card(w, h), f'<g clip-path="url(#hk)">{art}</g>', name_block(MP, 264, 32, 2.5),
+         text(MP, 296, "AI/ML Engineer", 17, INK, weight=500), text(MP, 320, "AMnova Technologies, Kochi, India", 15.5, SUB),
+         text(MP, 384, "AI systems that", 41, INK, weight=600, ls=-1.2), roll,
+         chips, f'<path d="M{MP} {ty + 24}H{w - MP}" stroke="#FFF" stroke-opacity=".12"/>',
+         text(MP, ty + 53, "HackerRank Orchestrate finalist", 14.5, DIM)]
+    return doc(w, h, "VINAYAK — AI/ML Engineer", HERO_DESC, "".join(b), bcss + tcss + rcss)
 
 
-# ------------------------------------------------------------------ expertise: three lit cards + principles
+# ------------------------------------------------------------------ proof band: four verified numbers roll into place
+PROOF = [("44%", "less time to first token", "loom.ai, 8.9s to 5.0s", "blue"), ("10", "specialist agents", "with human approval", "violet"),
+         ("18/20", "correct SQL answers", "NL2SQL, own benchmark", "amber"), ("1", "published paper", "Zenodo DOI, sole author", "green")]
+
+
+def odometer(x, y, value, size, color, uid):
+    """Digits spin up once and stop; without animation they already rest on the true value."""
+    out, css, cx = [], "", x
+    for k, ch in enumerate(value):
+        if ch.isdigit():
+            n = int(ch)
+            col = "".join(f'<text x="{cx + size * .28:.1f}" y="{y + (d - 10 - n) * size * 1.2:.1f}" class="s" font-size="{size}" font-weight="600" '
+                          f'text-anchor="middle" fill="{color}">{d % 10}</text>' for d in range(n, n + 11))
+            c = f"{uid}{k}"
+            css += (f"@keyframes {c}{{from{{transform:translateY({12 * size:.0f}px)}}to{{transform:none}}}}"
+                    f".{c}{{animation:{c} {1.6 + .25 * k:.2f}s cubic-bezier(.16,1,.3,1) .3s backwards}}")
+            out.append(f'<g class="{c}">{col}</g>')
+        else:
+            out.append(text(cx + (size * .06 if ch == "%" else 0), y, ch, size, color, weight=600))
+        cx += size * (.57 if ch.isdigit() else .42)
+    return (f'<defs><clipPath id="{uid}c"><rect x="{x - 4}" y="{y - size * .9:.1f}" width="{cx - x + size * .6:.0f}" height="{size * 1.06:.1f}"/></clipPath></defs>'
+            f'<g clip-path="url(#{uid}c)">{"".join(out)}</g>'), css
+
+
+def proof(m=False):
+    b, css = [], ""
+    w, h = (MW, 316) if m else (W, 178)
+    for i, (v, a, sub, hue) in enumerate(PROOF):
+        if m:
+            x, y, size = MP + (i % 2) * 184, 78 + (i // 2) * 146, 52
+        else:
+            x, y, size = P + i * 208, 86, 58
+        o, c = odometer(x, y, v, size, V[hue], f"o{i}")
+        css += c
+        b += [o, text(x, y + 34, a, 16, V["text"], weight=600), text(x, y + 56, sub, 13.5, V["text3"])]
+    desc = "; ".join(f"{v} {a} ({sub})" for v, a, sub, _ in PROOF)
+    return doc(w, h, "Measured results", desc, surface(w, h) + "".join(b), css)
+
+
+# ------------------------------------------------------------------ expertise
 FOCUS = [
-    ("blue", "nodes", "Agent systems", "loom.ai",
+    ("blue", "prompt", "Agent systems", "loom.ai",
      ["Tool execution in a real Linux", "sandbox; model routing with", "provider fallback."],
      ["Tool execution in a real Linux sandbox;", "model routing with provider fallback."]),
-    ("green", "cite", "Grounded generation", "loom.ai · lazyhire",
+    ("green", "cite", "Grounded generation", "loom.ai, lazyhire",
      ["Answers that cite sources or", "abstain; CV drafts checked", "for invented claims."],
      ["Answers that cite sources or abstain;", "CV drafts checked for invented claims."]),
-    ("orange", "bars", "Applied ML", "InForge-AI · InsightGenie",
+    ("amber", "bars", "Applied ML", "InForge-AI, InsightGenie",
      ["Cleaning, EDA and model", "benchmarking, with local", "fallbacks when LLMs fail."],
      ["Cleaning, EDA and model benchmarking,", "with local fallbacks when LLMs fail."]),
 ]
 PRINCIPLES = [("bolt", "Deterministic core"), ("target", "Cite or abstain"), ("refresh", "Fail over, not out"), ("doc", "Documented limits")]
 
 
-def icon_tile(t, x, y, kind, s=42):
-    ink = "#FFFFFF" if t["dark"] else t["text"]
-    return (f'<rect x="{x:.1f}" y="{y}" width="{s}" height="{s}" rx="12" fill="{t["glass"]}" fill-opacity="{t["glass_op"] * 2:.2f}" '
-            f'stroke="{t["line"]}" stroke-opacity="{t["line_op"] * 1.6:.2f}"/>' + glyph(kind, x + s / 2, y + s / 2, ink, s / 15, 1.6))
-
-
-def cta(t, x, y, label, size=13):
-    return text(x, y, label + "  →", size, t["text"], weight=600)
-
-
-def expertise(t, m=False):
+def expertise(m=False):
     b = []
     if m:
-        w, ch, gap = MW, 186, 14
+        w, ch, gap = MW, 174, 12
         for i, (hue, ic, title, ev, _, lines) in enumerate(FOCUS):
             y = i * (ch + gap)
-            b.append(glow_card(t, w, ch, hue, f"e{i}", 0, y, strength=.9))
-            b += [icon_tile(t, 20, y + 20, ic, 40), text(20, y + 98, title, 20, t["text"], weight=600)]
-            b += [text(20, y + 122 + j * 20, s, 14, t["text2"]) for j, s in enumerate(lines)]
-            b.append(cta(t, 20, y + 172, ev))
-        y0 = 3 * ch + 3 * gap
-        b.append(f'<g transform="translate(0 {y0})">{glass_card(t, w, 84, "p")}</g>')
+            b += [surface(w, ch, 0, y, 20), matrix(ic, MP + 2, y + 26, V[hue], 3.6),
+                  text(MP + 58, y + 50, title, 20, V["text"], weight=600, ls=-.3)]
+            b += [text(MP, y + 94 + j * 22, s, 15.5, V["text2"]) for j, s in enumerate(lines)]
+            b.append(text(MP, y + 150, f"Shown in {ev}", 13.5, V["text3"]))
+        y0 = 3 * (ch + gap)
+        b.append(surface(w, 92, 0, y0, 20))
         for i, (ic, label) in enumerate(PRINCIPLES):
-            x, y = 20 + (i % 2) * 190, y0 + 35 + (i // 2) * 28
-            b += [glyph(ic, x + 6, y - 5, t["text3"], 1.1), text(x + 20, y, label, 13.5, t["text2"])]
-        h = y0 + 84
+            x, y = MP + (i % 2) * 184, y0 + 39 + (i // 2) * 30
+            b += [glyph(ic, x + 6, y - 5, V["text3"], 1.5, 1.4), text(x + 22, y, label, 14.5, V["text2"])]
+        h = y0 + 92
     else:
-        gap, ch = 16, 240
+        gap, ch, w = 14, 236, W
         cw = (W - 2 * gap) / 3
-        w = W
         for i, (hue, ic, title, ev, lines, _) in enumerate(FOCUS):
             x = i * (cw + gap)
-            b.append(glow_card(t, cw, ch, hue, f"e{i}", x, 0))
-            b += [icon_tile(t, x + 22, 22, ic), text(x + 22, 116, title, 21, t["text"], weight=600, ls=-.3)]
-            b += [text(x + 22, 142 + j * 20, s, 13.5, t["text2"]) for j, s in enumerate(lines)]
-            b.append(cta(t, x + 22, 214, ev))
-        b.append(f'<g transform="translate(0 {ch + gap})">{glass_card(t, w, 50, "p", rx=25)}</g>')
+            b += [surface(cw, ch, x, 0, 20), matrix(ic, x + 26, 30, V[hue], 4),
+                  text(x + 24, 112, title, 20, V["text"], weight=600, ls=-.3)]
+            b += [text(x + 24, 140 + j * 21, s, 14.5, V["text2"]) for j, s in enumerate(lines)]
+            b.append(text(x + 24, 212, f"Shown in {ev}", 13, V["text3"]))
+        b.append(surface(w, 54, 0, ch + gap, 20))
         seg = w / len(PRINCIPLES)
         for i, (ic, label) in enumerate(PRINCIPLES):
-            x = i * seg + (seg - 20 - tw(label, 13.5)) / 2
-            b += [glyph(ic, x + 6, ch + gap + 20, t["text3"], 1.1), text(x + 20, ch + gap + 30, label, 13.5, t["text2"])]
-        h = ch + gap + 50
+            x = i * seg + (seg - 24 - tw(label, 14)) / 2
+            b += [glyph(ic, x + 7, ch + gap + 27, V["text3"], 1.5, 1.4), text(x + 24, ch + gap + 32, label, 14, V["text2"])]
+        h = ch + gap + 54
     desc = " ".join(f"{title} ({ev}): {' '.join(lines)}" for _, _, title, ev, _, lines in FOCUS)
     desc += " Principles: " + ", ".join(p for _, p in PRINCIPLES) + "."
-    return doc(w, h, "Engineering expertise", desc, "".join(b))
+    return doc(w, h, "Engineering expertise", desc, "".join(b), MATRIX_CSS)
 
 
-# ------------------------------------------------------------------ project cards
-def card_header(t, w, p, label, hue, ic, repo, m):
-    body, _ = tag(t, p, 26 if m else 30, label, hue, ic, 12 if m else 12.5, 26 if m else 28)
-    out = [body, arrow(w - p, 32 if m else 37, t["text2"])]
-    if not m:
-        out.append(text(w - p - 21, 48, repo, 11.5, t["text2"], True, anchor="end"))
-    return "".join(out)
-
-
-LOOM_PATH = [("Next.js", "trace UI"), ("FastAPI", "WebSocket"), ("LangGraph", "StateGraph"),
-             ("Router", "fallback"), ("Tools", "bash · fs · git"), ("E2B", "Linux sandbox")]
-LOOM_STATS = [("8.9s → 5.0s", "median time-to-first-token"), ("8 models", "across Groq, OpenRouter, OpenCode"),
-              ("10 agents", "specialists with human approval")]
-LOOM_DESC = ("loom.ai, flagship agent workspace: a coding agent inside a real Linux sandbox that streams every tool call. "
-             "Request path: Next.js trace UI, FastAPI WebSocket, LangGraph StateGraph, model router with fallback, tools, E2B sandbox; "
-             "events stream back over the same WebSocket. Median time-to-first-token 8.9s to 5.0s with prompt caching; "
-             "8 models across Groq, OpenRouter and OpenCode; 10 specialist agents with human approval.")
-
-
-def box(t, x, y, w, h, title, sub, ts=14, ss=10.5):
-    fill = mix(t["base"], t["glass"], .045 if t["dark"] else .025)
-    return (f'<rect x="{x:.1f}" y="{y}" width="{w:.1f}" height="{h}" rx="12" fill="{fill}" '
-            f'stroke="{t["line"]}" stroke-opacity="{t["line_op"] * 1.5:.2f}"/>'
-            + text(x + w / 2, y + h / 2 - 2, title, ts, t["text"], weight=600, anchor="middle")
-            + text(x + w / 2, y + h / 2 + 15, sub, ss, t["text3"], True, anchor="middle"))
-
-
-def chevron(x, y, color, d="r"):
-    s = {"r": f"M{x - 4:.1f} {y - 4}l4 4-4 4", "l": f"M{x + 4:.1f} {y - 4}l-4 4 4 4",
-         "d": f"M{x - 4:.1f} {y - 4:.1f}l4 4 4-4", "u": f"M{x - 4:.1f} {y + 4:.1f}l4-4 4 4"}[d]
-    return f'<path d="{s}" fill="none" stroke="{color}" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>'
-
-
-FLOW = "@keyframes flow{to{stroke-dashoffset:-10}}.flow{stroke-dasharray:3 7;animation:flow 1.1s linear infinite}"
-
-
-def card_loom(t, m=False):
-    blue, violet = t["hues"]["blue"]["rim"], t["hues"]["violet"]["rim"]
-    b, css = [tag_defs(t)], FLOW
-    if m:
-        w = MW
-        b += [card_header(t, w, MP, "Flagship", "blue", "star", "", True),
-              text(MP, 92, "loom.ai", 34, t["text"], weight=600, ls=-1),
-              text(MP, 124, "A coding agent inside a real Linux", 16, t["text2"]),
-              text(MP, 147, "sandbox that streams every tool call.", 16, t["text2"])]
-        gap, bh = 22, 50
-        bw = (w - 2 * MP - 2 * gap) / 3
-        rows = (174, 254)
-        xs = [MP + i * (bw + gap) for i in range(3)]
-        cells = [(xs[0], rows[0]), (xs[1], rows[0]), (xs[2], rows[0]), (xs[2], rows[1]), (xs[1], rows[1]), (xs[0], rows[1])]
-        mid0, mid1 = rows[0] + bh / 2, rows[1] + bh / 2
-        for i in range(2):
-            x1, x2 = xs[i] + bw, xs[i + 1]
-            b.append(f'<path class="flow" d="M{x1:.1f} {mid0}H{x2 - 2:.1f}" stroke="{blue}"/>' + chevron(x2 - 2, mid0, blue))
-        cx = xs[2] + bw / 2
-        b.append(f'<path class="flow" d="M{cx:.1f} {rows[0] + bh}V{rows[1] - 2}" stroke="{blue}"/>' + chevron(cx, rows[1] - 3, blue, "d"))
-        for i in (2, 1):
-            x1, x2 = xs[i], xs[i - 1] + bw
-            b.append(f'<path class="flow" d="M{x1:.1f} {mid1}H{x2 + 2:.1f}" stroke="{blue}"/>' + chevron(x2 + 2, mid1, blue, "l"))
-        b += [box(t, x, y, bw, bh, ti, su, 13.5, 10) for (x, y), (ti, su) in zip(cells, LOOM_PATH)]
-        b += [text(MP, 330, "EVENTS STREAM BACK OVER ONE WEBSOCKET", 10.5, t["text3"], True, ls=.6), hline(t, MP, 352, w - MP)]
-        for i, (v, lab) in enumerate(LOOM_STATS):
-            y = 390 + i * 54
-            b += [text(MP, y, v, 21, t["text"], weight=600, ls=-.3), text(MP, y + 21, lab, 13.5, t["text2"])]
-        h = 390 + 2 * 54 + 21 + 34
-    else:
-        w, h = W, 380
-        b += [card_header(t, w, P, "Flagship · agent workspace", "blue", "star", "vinayak533/loom.ai", False),
-              text(P, 106, "loom.ai", 38, t["text"], weight=600, ls=-1.2),
-              text(P, 138, "A coding agent inside a real Linux sandbox that streams every tool call.", 17, t["text2"])]
-        y0, bh, n, gap = 166, 58, len(LOOM_PATH), 26
-        bw = (w - 2 * P - gap * (n - 1)) / n
-        xs = [P + i * (bw + gap) for i in range(n)]
-        my, lane = y0 + bh / 2, y0 + bh + 24
-        c0, c5 = xs[0] + bw / 2, xs[-1] + bw / 2
-        label = "STREAMED BACK: TOKENS · TOOL OUTPUT · DIFFS · PREVIEW"
-        half = (tw(label, 10.5, True) + len(label) * .6) / 2 + 14
-        mx = (c0 + c5) / 2
-        b += [hline(t, x + bw, my, x + bw + gap - 3, .22) for x in xs[:-1]]
-        b.append(f'<circle class="req motion" cx="{c0:.1f}" cy="{my}" r="3.5" fill="{blue}"/>')
-        b.append(f'<path class="flow" d="M{c5:.1f} {y0 + bh}V{lane}H{mx + half:.1f}M{mx - half:.1f} {lane}H{c0:.1f}V{y0 + bh + 4}" '
-                 f'fill="none" stroke="{violet}" stroke-opacity=".85"/>' + chevron(c0, y0 + bh + 4, violet, "u"))
-        b.append(text(mx, lane + 4, label, 10.5, t["text3"], True, anchor="middle", ls=.6))
-        b += [chevron(x - 3, my, t["text3"]) for x in xs[1:]]
-        b += [box(t, x, y0, bw, bh, ti, su) for x, (ti, su) in zip(xs, LOOM_PATH)]
-        b.append(hline(t, P, 280, w - P))
-        cw = (w - 2 * P) / 3
-        for i, (v, lab) in enumerate(LOOM_STATS):
-            x = P + i * cw + (24 if i else 0)
-            if i:
-                b.append(vline(t, P + i * cw, 298, 352))
-            b += [text(x, 324, v, 25, t["text"], weight=600, ls=-.5), text(x, 348, lab, 13, t["text2"])]
-        travel = c5 - c0
-        css += (f"@keyframes req{{0%{{transform:translateX(0);opacity:0}}4%{{opacity:1}}62%{{transform:translateX({travel:.1f}px);opacity:1}}"
-                f"68%,100%{{transform:translateX({travel:.1f}px);opacity:0}}}}.req{{animation:req 6s cubic-bezier(.45,0,.25,1) infinite}}")
-    return doc(w, h, "loom.ai", LOOM_DESC, glow_card(t, w, h, "blue", "c") + "".join(b), css)
-
-
-PROJECTS = {
-    "lazyhire": dict(
-        hue="green", icon="check", label="Career workspace", name="lazyhire", repo="vinayak533/lazyhire",
-        tagline="A private career workspace that ranks Kerala job listings against your CV.",
-        compact=["A private career workspace that ranks", "Kerala job listings against your CV."],
-        steps=["9 sources", "validate apply links", "dedupe", "rank + explain", "guarded CV drafts"],
-        stack="Next.js 16 · React 19 · TypeScript · SQLite + Drizzle · Playwright",
-        prop="zero-fabrication CV guardrails"),
-    "inforge": dict(
-        hue="orange", icon="bars", label="Analytics pipeline", name="InForge-AI", repo="vinayak533/InForge-AI",
-        tagline="Eight pipeline agents turn a CSV or Excel file into analysis, models and a report.",
-        compact=["Eight pipeline agents turn a CSV or Excel", "file into analysis, models and a report."],
-        steps=["ingest", "clean", "EDA", "visualize", "ML benchmark", "insights", "code", "chat"],
-        stack="FastAPI · WebSockets · pandas · scikit-learn · XGBoost · React",
-        prop="completes without an LLM provider"),
-}
+# ------------------------------------------------------------------ stack
+STACK = [
+    ("AI / ML", ["pandas", "NumPy", "scikit-learn", "XGBoost"]),
+    ("LLMs and agents", ["LangGraph", "CrewAI", "LlamaIndex", "Vanna 2.0", "OpenAI SDK"]),
+    ("Model APIs", ["Groq", "Gemini", "OpenRouter"]),
+    ("Backend", ["Python", "FastAPI", "WebSockets", "Pydantic"]),
+    ("Frontend", ["TypeScript", "Next.js", "React", "Tailwind CSS"]),
+    ("Data", ["PostgreSQL", "Supabase", "pgvector", "SQLite", "Drizzle"]),
+    ("Cloud and delivery", ["E2B", "Docker", "GitHub Actions", "Playwright", "Vercel", "Render"]),
+]
 
 
 def wrap_tokens(items, width, sep_w):
@@ -302,212 +241,101 @@ def wrap_tokens(items, width, sep_w):
     return rows + [row] if row else rows
 
 
-def check(x, y, color):
-    return f'<path d="M{x:g} {y - 3:g}l3 3 6-6.5" fill="none" stroke="{color}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>'
-
-
-def card_project(t, key, m=False):
-    d = PROJECTS[key]
-    c = t["hues"][d["hue"]]
-    cs, ch, aw = 11.5, 28, 22
-    steps = [(s, tag_width(s, cs, ch, False, True)) for s in d["steps"]]
-    b = [tag_defs(t)]
-
-    def step(x, y, s, wd):
-        return tag(t, x, y, s, d["hue"], None, cs, ch, True, w=wd)[0]
-
+def stack(m=False):
+    b = []
     if m:
-        w = MW
-        b += [card_header(t, w, MP, d["label"], d["hue"], d["icon"], "", True), text(MP, 90, d["name"], 28, t["text"], weight=600, ls=-.8)]
-        b += [text(MP, 120 + i * 22, s, 15.5, t["text2"]) for i, s in enumerate(d["compact"])]
-        y = 164
-        for row in wrap_tokens(steps, w - 2 * MP, aw):
-            x = MP
-            for j, (s, wd) in enumerate(row):
-                if j:
-                    b.append(chevron(x - aw / 2 + 2, y + ch / 2, t["text3"]))
-                b.append(step(x, y, s, wd))
-                x += wd + aw
-            y += ch + 10
-        y += 12
-        b.append(hline(t, MP, y, w - MP))
-        parts = [(p, tw(p, 11.5, True)) for p in d["stack"].split(" · ")]
-        for row in wrap_tokens(parts, w - 2 * MP, tw(" · ", 11.5, True)):
-            y += 24
-            b.append(text(MP, y, " · ".join(p for p, _ in row), 11.5, t["text2"], True))
-        y += 28
-        b += [check(MP + 1, y - 4, c["ink"]), text(MP + 18, y, d["prop"], 13.5, c["ink"], weight=500)]
-        h = y + 32
-    else:
-        w, h = W, 262
-        b += [card_header(t, w, P, d["label"], d["hue"], d["icon"], d["repo"], False),
-              text(P, 102, d["name"], 32, t["text"], weight=600, ls=-.9),
-              text(P, 133, d["tagline"], 16, t["text2"])]
-        x, y = P, 158
-        for j, (s, wd) in enumerate(steps):
-            if j:
-                b.append(chevron(x - aw / 2 + 2, y + ch / 2, t["text3"]))
-            b.append(step(x, y, s, wd))
-            x += wd + aw
-        pw = tw(d["prop"], 13.5, weight=500)
-        b += [hline(t, P, 210, w - P), text(P, 238, d["stack"], 11.5, t["text2"], True),
-              check(w - P - pw - 18, 234, c["ink"]), text(w - P - pw, 238, d["prop"], 13.5, c["ink"], weight=500)]
-    desc = f'{d["name"]}: {d["tagline"]} Pipeline: {" → ".join(d["steps"])}. Stack: {d["stack"]}. {d["prop"].capitalize()}.'
-    return doc(w, h, d["name"], desc, glow_card(t, w, h, d["hue"], "c", strength=.85) + "".join(b))
-
-
-# ------------------------------------------------------------------ framed screenshot
-def screen(t, png, label, alt):
-    raw = png.read_bytes()
-    iw, ih = int.from_bytes(raw[16:20], "big"), int.from_bytes(raw[20:24], "big")
-    bar, w = 36, W
-    img_h = (w - 2) * ih / iw
-    h = math.ceil(bar + img_h + 1)
-    data = base64.b64encode(raw).decode()
-    ln = f'stroke="{t["line"]}" stroke-opacity="{t["line_op"] * 1.3:.2f}"'
-    dots = "".join(f'<circle cx="{22 + i * 16}" cy="18" r="4.5" fill="{t["line"]}" fill-opacity="{t["line_op"] * 1.8:.2f}"/>' for i in range(3))
-    body = (f'<defs><clipPath id="win"><rect x="1" y="1" width="{w - 2}" height="{h - 2}" rx="19"/></clipPath></defs>'
-            f'<g clip-path="url(#win)"><rect width="{w}" height="{h}" fill="{t["base_top"]}"/>'
-            f'<image x="1" y="{bar}" width="{w - 2}" height="{img_h:.2f}" preserveAspectRatio="none" href="data:image/png;base64,{data}"/></g>'
-            f'{dots}{text(w / 2, 22, label, 11, t["text3"], True, anchor="middle")}'
-            f'<path d="M1 {bar - .5}H{w - 1}" {ln}/>'
-            f'<rect x=".5" y=".5" width="{w - 1}" height="{h - 1}" rx="20" fill="none" {ln}/>')
-    return doc(w, h, label, alt, body)
-
-
-# ------------------------------------------------------------------ stack
-STACK = [
-    ("AI / ML", "orange", "bars", ["pandas", "NumPy", "scikit-learn", "XGBoost"]),
-    ("LLMs & agents", "blue", "nodes", ["LangGraph", "CrewAI", "LlamaIndex", "Vanna 2.0", "OpenAI SDK"]),
-    ("Model APIs", "violet", "swap", ["Groq", "Gemini", "OpenRouter"]),
-    ("Backend", "cyan", "server", ["Python", "FastAPI", "WebSockets", "Pydantic"]),
-    ("Frontend", "pink", "window", ["TypeScript", "Next.js", "React", "Tailwind CSS"]),
-    ("Data", "yellow", "db", ["PostgreSQL", "Supabase", "pgvector", "SQLite", "Drizzle"]),
-    ("Cloud & delivery", "green", "cloud", ["E2B", "Docker", "GitHub Actions", "Playwright", "Vercel", "Render"]),
-]
-
-
-def plain_chip(t, x, y, w, h, label, size=13):
-    return (f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h}" rx="{h / 2}" fill="{t["glass"]}" '
-            f'fill-opacity="{t["glass_op"] * 1.6:.2f}" stroke="{t["line"]}" stroke-opacity="{t["line_op"] * 1.4:.2f}"/>'
-            + text(x + w / 2, y + h / 2 + size * .36, label, size, t["text"], anchor="middle"))
-
-
-def stack(t, m=False):
-    cs, ch, gap = 13, 28, 8
-    b = [tag_defs(t)]
-    if m:
-        w, y = MW, 6
-        for i, (group, hue, ic, items) in enumerate(STACK):
+        w, y = MW, 8
+        for i, (group, items) in enumerate(STACK):
             if i:
-                b.append(hline(t, MP, y + 4, w - MP))
-            y += 18
-            b.append(tag(t, MP, y, group, hue, ic, 12, 26)[0])
-            y += 26 + 10
-            chips = [(s, tw(s, cs) + 26) for s in items]
-            for row in wrap_tokens(chips, w - 2 * MP, gap):
+                b.append(hline(MP, y + 14, w - MP))
+            y += 44
+            b.append(text(MP, y, group, 14.5, V["text3"]))
+            for row in wrap_tokens([(s, tw(s, 18, weight=600)) for s in items], w - 2 * MP, 20):
+                y += 30
                 x = MP
                 for s, wd in row:
-                    b.append(plain_chip(t, x, y, wd, ch, s, cs))
-                    x += wd + gap
-                y += ch + gap
-            y += 4
-        h = y + 16
+                    b.append(text(x, y, s, 18, V["text"], weight=500))
+                    x += wd + 20
+        h = y + 32
     else:
-        w, rh, top = W, 48, 20
+        w, rh, top = W, 58, 14
         h = top * 2 + rh * len(STACK)
-        for i, (group, hue, ic, items) in enumerate(STACK):
+        for i, (group, items) in enumerate(STACK):
             y = top + i * rh
             if i:
-                b.append(hline(t, P, y, w - P))
-            b.append(tag(t, P, y + 10, group, hue, ic, 12.5, 28, w=158)[0])
-            x = 220
+                b.append(hline(P, y, w - P))
+            b.append(text(P, y + rh / 2 + 5, group, 14.5, V["text3"]))
+            x = 210
             for s in items:
-                wd = tw(s, cs) + 26
-                b.append(plain_chip(t, x, y + 10, wd, ch, s, cs))
-                x += wd + gap
-    desc = "; ".join(f"{g}: {', '.join(items)}" for g, _, _, items in STACK)
-    return doc(w, h, "Tech stack", desc, glass_card(t, w, h, "s") + "".join(b))
+                b.append(text(x, y + rh / 2 + 6.5, s, 18, V["text"], weight=500))
+                x += tw(s, 18, weight=600) + 20
+    desc = "; ".join(f"{g}: {', '.join(items)}" for g, items in STACK)
+    return doc(w, h, "Tech stack", desc, surface(w, h) + "".join(b))
 
 
 # ------------------------------------------------------------------ contact
 EMAIL = "vinayakkvjob@gmail.com"
 
 
-def button(t, x, y, w, h):
-    """Bevelled key, like a poster CTA: light on dark, dark on light."""
-    if t["dark"]:
-        top, bot, ink, edge = "#F5F6F8", "#C9CDD4", "#0B0F14", "#FFFFFF"
-    else:
-        top, bot, ink, edge = "#273244", "#0B1220", "#FFFFFF", "#475569"
-    return (f'<defs><linearGradient id="key" x1="0" y1="{y}" x2="0" y2="{y + h}" gradientUnits="userSpaceOnUse">'
-            f'<stop stop-color="{top}"/><stop offset="1" stop-color="{bot}"/></linearGradient></defs>'
-            f'<rect x="{x:.1f}" y="{y + 3}" width="{w:.1f}" height="{h}" rx="12" fill="#000000" fill-opacity=".35"/>'
-            f'<rect x="{x:.1f}" y="{y}" width="{w:.1f}" height="{h}" rx="12" fill="url(#key)" stroke="{edge}" stroke-opacity=".55"/>'
-            f'<path d="M{x + 12:.1f} {y + 1.5}H{x + w - 12:.1f}" stroke="#FFFFFF" stroke-opacity=".7"/>'
-            + text(x + w / 2 - 9, y + h / 2 + 4.8, EMAIL, 13.5, ink, True, 600, "middle")
-            + arrow(x + w / 2 + tw(EMAIL, 13.5, True) / 2 + 9, y + h / 2 - 5, ink, 9, 1.7))
+def button(x, y, w, h):
+    return (f'<rect x="{x:.1f}" y="{y}" width="{w:.1f}" height="{h}" rx="{h / 2}" fill="#FFF"/>'
+            + text(x + w / 2 - 9, y + h / 2 + 5.2, EMAIL, 15, "#0D0D0D", weight=600, anchor="middle")
+            + f'<g class="na">{arrow(x + w - 24, y + h / 2 - 5, "#0D0D0D", 10, 1.8)}</g>')
 
 
-def live_dot(t, x, y):
-    g = t["hues"]["green"]["rim"]
-    return (f'<circle cx="{x}" cy="{y}" r="3.5" fill="{g}"/>'
-            f'<circle class="ping motion" cx="{x}" cy="{y}" r="3.5" fill="none" stroke="{g}"/>')
+# The lights behind the contact copy drift slowly, like an aurora; the button catches a sheen.
+DRIFT = ("".join(f"@keyframes d{i}{{to{{transform:translate({x}px,{y}px) scale({s})}}}}.dr{i}{{transform-box:fill-box;transform-origin:center;animation:d{i} {t}s ease-in-out infinite alternate}}"
+                 for i, (x, y, s, t) in enumerate(((150, 30, 1.2, 9), (-190, 46, 1.15, 11), (-160, -40, 1.25, 13), (220, -34, 1.3, 10))))
+         + "@keyframes na{0%,100%{transform:translate(0,0)}50%{transform:translate(3px,-3px)}}.na{animation:na 1.8s ease-in-out infinite}")
 
 
-def contact(t, m=False):
-    b = []
+def contact(m=False):
+    live = lambda x, y: (f'<circle cx="{x}" cy="{y}" r="4" fill="#7EF0B0"/>'
+                         f'<circle class="ping motion" cx="{x}" cy="{y}" r="4" fill="none" stroke="#7EF0B0"/>')
     if m:
-        w, h = MW, 286
-        b += [statement(t, MP, 64, 27, "Let’s build AI that"), statement(t, MP, 98, 27, "", "shows its work."),
-              live_dot(t, MP + 4, 134), text(MP + 18, 139, "Open to AI/ML and LLM engineering roles.", 14.5, t["text2"]),
-              text(MP, 162, "Remote · Bangalore · Kochi · Hyderabad", 14.5, t["text2"]),
-              button(t, MP, 196, w - 2 * MP, 50)]
+        w, h = MW, 276
+        b = [statement(MP, 66, 30, "Let’s build AI that", fill="#FFF"), statement(MP, 102, 30, "", "shows its work.", fill="#FFF"),
+             live(MP + 5, 141), text(MP + 20, 146, "Open to AI/ML roles", 17, "#FFF", weight=500),
+             button(MP, 190, w - 2 * MP, 52)]
     else:
-        w, h = W, 184
-        bw = tw(EMAIL, 13.5, True) + 72
-        b += [statement(t, P, 78, 27, "Let’s build AI that ", "shows its work."),
-              live_dot(t, P + 4, 112), text(P + 18, 117, "Open to AI/ML and LLM engineering roles.", 15, t["text2"]),
-              text(P, 141, "Remote · Bangalore · Kochi · Hyderabad", 15, t["text2"]),
-              button(t, w - P - bw, 66, bw, 50)]
-    return doc(w, h, "Contact", "Let’s build AI that shows its work. Open to AI/ML and LLM engineering roles: remote, Bangalore, "
-               f"Kochi or Hyderabad. Email {EMAIL}.", glow_card(t, w, h, "violet", "c", strength=.8) + "".join(b), PING)
+        w, h = W, 200
+        b = [statement(P, 92, 31, "Let’s build AI that ", "shows its work.", fill="#FFF"),
+             live(P + 5, 130), text(P + 20, 136, "Open to AI/ML roles", 18, "#FFF", weight=500),
+             button(w - P - 262, 74, 262, 52)]
+    # A soft dark field behind the copy keeps white text readable on the brighter lights.
+    veil = (f'<defs><linearGradient id="vl" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#140A3C" stop-opacity=".62"/>'
+            f'<stop offset="{1 if m else .75}" stop-color="#140A3C" stop-opacity="{.4 if m else 0}"/></linearGradient></defs>'
+            f'<rect width="{w}" height="{h}" fill="url(#vl)"/>')
+    return doc(w, h, "Contact", "Let’s build AI that shows its work. Open to AI/ML roles. "
+               f"Email {EMAIL}.", cover(0, 0, w, h, "violet", veil, rx=R) + "".join(b), PING + DRIFT)
 
 
-# ------------------------------------------------------------------ link pills
-LINKS = {"linkedin": ("LinkedIn", "blue", "linkedin"), "portfolio": ("Portfolio", "violet", "globe"), "email": ("Email", "green", "mail")}
+# ------------------------------------------------------------------ link buttons
+LINKS = {"resume": ("Resume", "doc", True), "portfolio": ("Portfolio", "globe", False), "linkedin": ("LinkedIn", "linkedin", False), "email": ("Email", "mail", False)}
 
 
-def link_pill(t, key):
-    label, hue, ic = LINKS[key]
-    h = 34
-    w = math.ceil(tag_width(label, 13.5, h)) + 2
-    body, _ = tag(t, 1, .5, label, hue, ic, 13.5, h - 1, w=w - 2, solid=True)
-    return doc(w, h, label, label, tag_defs(t) + body)
+def link_button(key):
+    label, ic, primary = LINKS[key]
+    h = 36
+    tx = tw(label, 14, weight=600)
+    w = math.ceil(tx + 50)
+    fill, ink, line = (V["inv"], V["invtext"], V["inv"]) if primary else (V["bg"], V["text"], V["line"])
+    body = (f'<rect x=".5" y=".5" width="{w - 1}" height="{h - 1}" rx="{(h - 1) / 2}" fill="{fill}" stroke="{line}"/>'
+            + glyph(ic, 21, h / 2, ink, 1.75, 1.5) + text(34 + tx / 2, h / 2 + 5, label, 14, ink, weight=600, anchor="middle"))
+    return doc(w + 3, h, label, label, body)  # 3 px of air, so buttons need no &nbsp; between them
 
 
 # ------------------------------------------------------------------
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
-    responsive = {"hero": lambda t, m: hero_compact(t) if m else hero_desktop(t), "expertise": expertise,
-                  "card-loom": card_loom, "card-lazyhire": lambda t, m: card_project(t, "lazyhire", m),
-                  "card-inforge": lambda t, m: card_project(t, "inforge", m), "stack": stack, "contact": contact}
-    count = 0
-    for theme in PUBLISHED:
-        t = THEMES[theme]
-        for name, render in responsive.items():
-            for m in (False, True):
-                (OUT / f'{name}-{theme}{"-compact" if m else ""}.svg').write_text(render(t, m), encoding="utf-8")
-                count += 1
-        for key in LINKS:
-            (OUT / f"link-{key}-{theme}.svg").write_text(link_pill(t, key), encoding="utf-8")
-            count += 1
-        (OUT / f"screen-loom-{theme}.svg").write_text(
-            screen(t, ROOT / "assets/screens/loom-agent-trace.png", "loom.ai — Code workspace",
-                   "loom.ai's Code workspace: timed tool calls in the agent trace beside the file the agent wrote. "
-                   "Real interface; scripted demo turn."), encoding="utf-8")
-        count += 1
-    print(f"Built {count} profile assets.")
+    responsive = {"hero": lambda m: hero_compact() if m else hero_desktop(), "expertise": expertise,
+                  "proof": proof, "card-loom": scenes.loom, "card-lazyhire": scenes.lazyhire, "card-inforge": scenes.inforge,
+                  "card-paper": pages.paper, "card-portfolio": pages.portfolio, "stack": stack, "contact": contact}
+    out = {f'{name}{"-compact" if m else ""}': render(m) for name, render in responsive.items() for m in (False, True)}
+    out.update({f"link-{key}": link_button(key) for key in LINKS})
+    for name, svg in out.items():
+        (OUT / f"{name}.svg").write_text(svg, encoding="utf-8")
+    print(f"Built {len(out)} profile assets.")
 
 
 if __name__ == "__main__":

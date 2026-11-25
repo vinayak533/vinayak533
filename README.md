@@ -1,41 +1,38 @@
+<p>
 <picture>
-  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/hero-dark-compact.svg">
-  <img src="assets/svg/hero-dark.svg" width="100%" alt="VINAYAK — AI/ML Engineer at AMnova Technologies, Kochi, India. AI systems that show their work: agents that run real tools, answers that cite or abstain. HackerRank Orchestrate finalist. A butterfly drawn in white and violet dots flies across the banner behind the text, trailing violet stardust.">
+  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/hero-compact.svg">
+  <img src="assets/svg/hero.svg" width="100%" alt="VINAYAK — AI/ML Engineer at AMnova Technologies, Kochi, India. AI systems that show their work: agents that run real tools, answers that cite or abstain. HackerRank Orchestrate finalist. A butterfly drawn in white and violet dots flies across the banner behind the text, trailing violet stardust.">
 </picture>
+</p>
 
 <p>
-  <a href="https://www.linkedin.com/in/vinayak-kv-ds"><img src="assets/svg/link-linkedin-dark.svg" height="34" alt="LinkedIn"></a>&nbsp;
-  <a href="https://vinayak533.github.io/VINAYAK_PORTFOLIO/"><img src="assets/svg/link-portfolio-dark.svg" height="34" alt="Portfolio"></a>&nbsp;
-  <a href="mailto:vinayakkvjob@gmail.com"><img src="assets/svg/link-email-dark.svg" height="34" alt="Email"></a>
+  <a href="https://www.vinayakkv.com/Vinayak_CV.pdf"><img src="assets/svg/link-resume.svg" height="34" alt="Resume (PDF)"></a>
+  <a href="https://www.vinayakkv.com/"><img src="assets/svg/link-portfolio.svg" height="34" alt="Portfolio"></a>
+  <a href="https://www.linkedin.com/in/vinayak-kv-ds"><img src="assets/svg/link-linkedin.svg" height="34" alt="LinkedIn"></a>
+  <a href="mailto:vinayakkvjob@gmail.com"><img src="assets/svg/link-email.svg" height="34" alt="Email"></a>
 </p>
 
 I build agent systems, grounded LLM applications and ML pipelines that expose how they work: live tool traces, cited sources, tested guardrails and documented limits. AI/ML Engineer at **AMnova Technologies**, Kochi.
 
-<br>
+**Open to AI/ML roles.**
 
-### Expertise
-
+<p>
 <picture>
-  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/expertise-dark-compact.svg">
-  <img src="assets/svg/expertise-dark.svg" width="100%" alt="Agent systems (loom.ai): tool execution in a real Linux sandbox, model routing with provider fallback. Grounded generation (loom.ai, lazyhire): answers that cite sources or abstain; CV drafts checked for invented claims. Applied ML (InForge-AI, InsightGenie, NL2SQL): cleaning, EDA and model benchmarking, with local fallbacks when LLMs fail. Product engineering (loom.ai, lazyhire, InForge-AI): WebSocket backends and Next.js products, hardened with CSP, CSRF and E2E tests.">
+  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/proof-compact.svg">
+  <img src="assets/svg/proof.svg" width="100%" alt="44% less time to first token in loom.ai, from 8.9s to 5.0s. 10 specialist agents with human approval. 18 of 20 correct SQL answers on NL2SQL&#39;s own benchmark. 1 published paper with a Zenodo DOI, sole author.">
 </picture>
-
-<br>
+</p>
 
 ### Selected work
 
 <a href="https://github.com/vinayak533/loom.ai">
 <picture>
-  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/card-loom-dark-compact.svg">
-  <img src="assets/svg/card-loom-dark.svg" width="100%" alt="loom.ai, flagship agent workspace: a coding agent inside a real Linux sandbox that streams every tool call. Request path: Next.js trace UI, FastAPI WebSocket, LangGraph, model router with fallback, tools, E2B sandbox. Median time-to-first-token 8.9s to 5.0s; 8 models across Groq, OpenRouter and OpenCode; 10 specialist agents with human approval. Open repository.">
+  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/card-loom-compact.svg">
+  <img src="assets/svg/card-loom.svg" width="100%" alt="loom.ai, flagship agent workspace: a coding agent inside a real Linux sandbox that streams every tool call. Animated replay of the repository's scripted demo turn: a prompt is sent, terminal, write and dev-server calls complete, and App.tsx is written. Request path: Next.js, FastAPI WebSocket, LangGraph, model router with fallback, tools, E2B sandbox. A race drawn in real seconds compares median time-to-first-token before, 8.9s, and after prompt caching, 5.0s. 8 models across Groq, OpenRouter and OpenCode; 10 specialist agents with human approval. Open repository.">
 </picture>
 </a>
 
-<a href="https://github.com/vinayak533/loom.ai#-project-showcase">
-<img src="assets/svg/screen-loom-dark.svg" width="100%" alt="loom.ai's Code workspace: timed tool calls in the agent trace beside the file the agent wrote. Real interface; scripted demo turn.">
-</a>
-
-<sub>Real interface. The agent turn is scripted and played through the live WebSocket UI — <a href="https://github.com/vinayak533/loom.ai#-project-showcase">capture notes</a>.</sub>
+<sub>Animated replay of the repository's scripted demo turn. Real screens are in the notes below: <a href="https://github.com/vinayak533/loom.ai#-project-showcase">capture notes</a>.</sub>
 
 [Repository ↗](https://github.com/vinayak533/loom.ai) &nbsp;·&nbsp; [Architecture](https://github.com/vinayak533/loom.ai/blob/main/docs/architecture.md) &nbsp;·&nbsp; [Known limits](https://github.com/vinayak533/loom.ai/blob/main/docs/known-limits.md)
 
@@ -48,6 +45,8 @@ I build agent systems, grounded LLM applications and ML pipelines that expose ho
 - **Grounding** — notebooks answer only from uploaded sources with `[n]` citations, or say the sources don't cover it. Retrieval uses lexical hashed vectors, not semantic search.
 - **Scope** — Chat, Code, Learn (ten authored courses) and ten specialist agents with human approval. Code needs an E2B key; AI features need a model-provider key.
 
+<img src="assets/screens/loom-agent-trace.png" width="100%" loading="lazy" alt="loom.ai's Code workspace: timed tool calls in the agent trace beside the file the agent wrote. Real interface, scripted demo turn.">
+
 <img src="assets/screens/loom-specialists.png" width="100%" loading="lazy" alt="Gallery of ten specialist agents, each listing its role and the tools it can call.">
 
 <img src="assets/screens/loom-learn.png" width="100%" loading="lazy" alt="Learn course catalogue with progress, assessments and a resume banner.">
@@ -58,10 +57,12 @@ I build agent systems, grounded LLM applications and ML pipelines that expose ho
 
 <a href="https://github.com/vinayak533/lazyhire">
 <picture>
-  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/card-lazyhire-dark-compact.svg">
-  <img src="assets/svg/card-lazyhire-dark.svg" width="100%" alt="lazyhire: a private career workspace that ranks Kerala job listings against your CV. Pipeline: 9 sources, validate apply links, dedupe, rank and explain, guarded CV drafts. Next.js 16, React 19, TypeScript, SQLite with Drizzle, Playwright. Zero-fabrication CV guardrails. Open repository.">
+  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/card-lazyhire-compact.svg">
+  <img src="assets/svg/card-lazyhire.svg" width="100%" alt="lazyhire: a private career workspace that ranks Kerala job listings against your CV. Animated illustration with fixture listings: postings from several of its nine sources move through apply-link validation, deduplication and ranking; dead links and duplicates drop out, and survivors are ranked with the reason they match. A CV draft line that cannot be traced to the source CV is struck out and rejected. Next.js 16, React 19, TypeScript, SQLite with Drizzle, Playwright. Zero-fabrication CV guardrails. Open repository.">
 </picture>
 </a>
+
+<sub>Animated illustration with fixture listings. Real screens are in the notes below.</sub>
 
 <details>
 <summary>Engineering notes &amp; product screens</summary>
@@ -87,10 +88,12 @@ I build agent systems, grounded LLM applications and ML pipelines that expose ho
 
 <a href="https://github.com/vinayak533/InForge-AI">
 <picture>
-  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/card-inforge-dark-compact.svg">
-  <img src="assets/svg/card-inforge-dark.svg" width="100%" alt="InForge-AI: eight pipeline agents turn a CSV or Excel file into analysis, models and a report. Pipeline: ingest, clean, EDA, visualize, ML benchmark, insights, code, chat. FastAPI, WebSockets, pandas, scikit-learn, XGBoost, React. Completes without an LLM provider. Open repository.">
+  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/card-inforge-compact.svg">
+  <img src="assets/svg/card-inforge.svg" width="100%" alt="InForge-AI: eight pipeline agents turn a CSV or Excel file into analysis, models and a report. Animated illustration: ingest, clean, EDA, visualize, ML benchmark, insights, code and chat run in order; missing cells are repaired, a trend is drawn, candidate models are compared. At insights the LLM provider fails, a local fallback takes over, and the run still completes. FastAPI, WebSockets, pandas, scikit-learn, XGBoost, React. Completes without an LLM provider. Open repository.">
 </picture>
 </a>
+
+<sub>Animated illustration of one run, including a provider failure.</sub>
 
 <details>
 <summary>Engineering notes</summary>
@@ -102,50 +105,74 @@ I build agent systems, grounded LLM applications and ML pipelines that expose ho
 
 </details>
 
-<details>
-<summary>More projects — retrieval, evaluation &amp; applied ML</summary>
+### Research
 
-- [**NL2SQL-AI-Assistant**](https://github.com/vinayak533/NL2SQL-AI-Assistant) — validated SQL over a clinic database; 18/20 on its own benchmark. Vanna 2.0 · Gemini · FastAPI
-- [**llm-battle-arena**](https://github.com/vinayak533/llm-battle-arena) — two models answer, a third judges with structured verdicts. LlamaIndex · Groq
-- [**InsightGenie**](https://github.com/vinayak533/InsightGenie-Data-Analyzer) — CSV health checks, charts and rule-based ML recommendations. FastAPI · React · pandas
-- [**ARIA churn platform**](https://github.com/vinayak533/bank-churn-intelligence-platform) — XGBoost churn estimates, explained by an LLM and read aloud. FastAPI · Groq · ElevenLabs
-- [**PredictLab**](https://github.com/vinayak533/PredictLab-) — three health-risk classifiers behind one API. scikit-learn · FastAPI · Docker
-- [**Medical Voice & Vision**](https://github.com/vinayak533/AI-Medical-Voice-Vision-Assistant) — spoken question plus image in, spoken answer out. Groq · Gradio · gTTS
-- [**Multi-agent stock analysis**](https://github.com/vinayak533/AI-Multi-Agent-Stock-Analysis-Trading-System) — two agents turn a price snapshot into a Buy/Sell/Hold rationale. CrewAI · yfinance · Streamlit
+<a href="https://doi.org/10.5281/zenodo.20253956">
+<picture>
+  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/card-paper-compact.svg">
+  <img src="assets/svg/card-paper.svg" width="100%" alt="Research paper: PredictLab, an AI-powered multi-disease clinical risk prediction platform using machine learning and large language model explanations. By Vinayak K V, published 17 May 2026 on Zenodo, DOI 10.5281/zenodo.20253956, CC BY 4.0. Animated figures: a linear SVM boundary for diabetes, a random forest for stroke and a logistic curve for heart disease. Figures are schematic. Llama 3.1 8B explains each result in plain language, as a risk indicator rather than a diagnosis. Read the paper.">
+</picture>
+</a>
 
-</details>
+[Read the paper ↗](https://doi.org/10.5281/zenodo.20253956) &nbsp;·&nbsp; [Live demo](https://huggingface.co/spaces/VINAYAKKV/Predict-Ai) &nbsp;·&nbsp; [Code](https://github.com/vinayak533/PredictLab-)
 
-<br>
+### Portfolio
+
+<p>
+<a href="https://www.vinayakkv.com/">
+<picture>
+  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/card-portfolio-compact.svg">
+  <img src="assets/svg/card-portfolio.svg" width="100%" alt="Portfolio: vinayakkv.com. I build agents that run real tools and cite their sources. Neo, the site's robot guide, floats, blinks and talks: live traces and receipts for every claim. Open portfolio.">
+</picture>
+</a>
+</p>
+
+### More projects
+
+| Project | What it does |
+| :-- | :-- |
+| [**NL2SQL-AI-Assistant**](https://github.com/vinayak533/NL2SQL-AI-Assistant) | Validated SQL over a clinic database; 18/20 on its own benchmark<br><sub>Vanna 2.0, Gemini, FastAPI</sub> |
+| [**llm-battle-arena**](https://github.com/vinayak533/llm-battle-arena) | Two models answer, a third judges with structured verdicts<br><sub>LlamaIndex, Groq</sub> |
+| [**InsightGenie**](https://github.com/vinayak533/InsightGenie-Data-Analyzer) | CSV health checks, charts and rule-based ML recommendations<br><sub>FastAPI, React, pandas</sub> |
+| [**ARIA churn platform**](https://github.com/vinayak533/bank-churn-intelligence-platform) | XGBoost churn estimates, explained by an LLM and read aloud<br><sub>FastAPI, Groq, ElevenLabs</sub> |
+| [**PredictLab**](https://github.com/vinayak533/PredictLab-) | Three health-risk classifiers behind one API<br><sub>scikit-learn, FastAPI, Docker</sub> |
+| [**Medical Voice & Vision**](https://github.com/vinayak533/AI-Medical-Voice-Vision-Assistant) | Spoken question plus image in, spoken answer out<br><sub>Groq, Gradio, gTTS</sub> |
+| [**Multi-agent stock analysis**](https://github.com/vinayak533/AI-Multi-Agent-Stock-Analysis-Trading-System) | Two agents turn a price snapshot into a Buy/Sell/Hold rationale<br><sub>CrewAI, yfinance, Streamlit</sub> |
+
+### Expertise
+
+<picture>
+  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/expertise-compact.svg">
+  <img src="assets/svg/expertise.svg" width="100%" alt="Agent systems (loom.ai): tool execution in a real Linux sandbox, model routing with provider fallback. Grounded generation (loom.ai, lazyhire): answers that cite sources or abstain; CV drafts checked for invented claims. Applied ML (InForge-AI, InsightGenie, NL2SQL): cleaning, EDA and model benchmarking, with local fallbacks when LLMs fail. Product engineering (loom.ai, lazyhire, InForge-AI): WebSocket backends and Next.js products, hardened with CSP, CSRF and E2E tests.">
+</picture>
+
+### Tech stack
+
+<picture>
+  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/stack-compact.svg">
+  <img src="assets/svg/stack.svg" width="100%" alt="AI / ML: pandas, NumPy, scikit-learn, XGBoost. LLMs and agents: LangGraph, CrewAI, LlamaIndex, Vanna 2.0, OpenAI SDK. Model APIs: Groq, Gemini, OpenRouter. Backend: Python, FastAPI, WebSockets, Pydantic. Frontend: TypeScript, Next.js, React, Tailwind CSS. Data: PostgreSQL, Supabase, pgvector, SQLite, Drizzle. Cloud and delivery: E2B, Docker, GitHub Actions, Playwright, Vercel, Render.">
+</picture>
+
+<sub>Only technologies declared in the dependency files of the projects above.</sub>
 
 ### GitHub activity
 
 <a href="https://github.com/vinayak533?tab=overview">
 <picture>
-  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/activity-dark-compact.svg">
-  <img src="assets/svg/activity-dark.svg" width="100%" alt="Weekly GitHub contributions over the last year as a dot matrix, with the last 90 days highlighted. Refreshed daily from GitHub’s contribution calendar by a repository workflow.">
+  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/activity-compact.svg">
+  <img src="assets/svg/activity.svg" width="100%" alt="Weekly GitHub contributions over the last year as a dot matrix, with the last 90 days highlighted. Refreshed daily from GitHub’s contribution calendar by a repository workflow.">
 </picture>
 </a>
-
-<br>
-
-### Tech stack
-
-<picture>
-  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/stack-dark-compact.svg">
-  <img src="assets/svg/stack-dark.svg" width="100%" alt="AI / ML: pandas, NumPy, scikit-learn, XGBoost. LLMs and agents: LangGraph, CrewAI, LlamaIndex, Vanna 2.0, OpenAI SDK. Model APIs: Groq, Gemini, OpenRouter. Backend: Python, FastAPI, WebSockets, Pydantic. Frontend: TypeScript, Next.js, React, Tailwind CSS. Data: PostgreSQL, Supabase, pgvector, SQLite, Drizzle. Cloud and delivery: E2B, Docker, GitHub Actions, Playwright, Vercel, Render.">
-</picture>
-
-<sub>Only technologies declared in the dependency files of the projects above.</sub>
-
-<br>
 
 ### Contact
 
+<p>
 <a href="mailto:vinayakkvjob@gmail.com">
 <picture>
-  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/contact-dark-compact.svg">
-  <img src="assets/svg/contact-dark.svg" width="100%" alt="Let’s build AI that shows its work. Open to AI/ML and LLM engineering roles: remote, Bangalore, Kochi or Hyderabad. Email vinayakkvjob@gmail.com.">
+  <source media="(max-width: 639px), (min-width: 768px) and (max-width: 959px)" srcset="assets/svg/contact-compact.svg">
+  <img src="assets/svg/contact.svg" width="100%" alt="Let’s build AI that shows its work. Open to AI/ML roles. Email vinayakkvjob@gmail.com.">
 </picture>
 </a>
+</p>
 
-[LinkedIn](https://www.linkedin.com/in/vinayak-kv-ds) &nbsp;·&nbsp; [Portfolio](https://vinayak533.github.io/VINAYAK_PORTFOLIO/) &nbsp;·&nbsp; [All repositories](https://github.com/vinayak533?tab=repositories)
+[LinkedIn](https://www.linkedin.com/in/vinayak-kv-ds) &nbsp;·&nbsp; [Portfolio](https://www.vinayakkv.com/) &nbsp;·&nbsp; [All repositories](https://github.com/vinayak533?tab=repositories)
